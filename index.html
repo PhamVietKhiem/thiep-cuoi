@@ -5,13 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Thiệp mời — Viết Khiêm & Hồng Nhung</title>
 
-  <!-- Thẻ Open Graph để hiện ảnh + tiêu đề đẹp khi gửi link qua Zalo / Messenger / Telegram -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Thiệp mời — Viết Khiêm & Hồng Nhung" />
-  <meta property="og:description" content="Trân trọng kính mời — 09:30 Chủ nhật, 13.12.2026 tại Hải Phòng" />
-  <meta property="og:image" content="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80" />
-  <meta name="twitter:card" content="summary_large_image" />
-
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -24,7 +17,7 @@
       --gold: #b68d40;
       --gold-dark: #8f6b29;
       --line: #e6dfd5;
-      --radius: 16px;
+      --radius: 18px;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -35,11 +28,23 @@
       color: var(--ink);
       line-height: 1.65;
       overflow-x: hidden;
+      -webkit-tap-highlight-color: transparent;
     }
 
     h1, h2, h3, .serif {
       font-family: 'Cormorant Garamond', serif;
       font-weight: 600;
+    }
+
+    .scroll-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--gold-dark), var(--gold), #e5c37b);
+      z-index: 95;
+      transition: width 0.08s linear;
     }
 
     #petal-canvas {
@@ -149,9 +154,9 @@
     }
 
     .wrap {
-      max-width: 760px;
+      max-width: 780px;
       margin: 0 auto;
-      padding: 0 20px 96px;
+      padding: 0 20px 128px;
       position: relative;
       z-index: 10;
     }
@@ -164,12 +169,13 @@
 
     .reveal {
       opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+      transform: translateY(34px) scale(0.985);
+      transition: opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1), transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: transform, opacity;
     }
     .reveal.visible {
       opacity: 1;
-      transform: translateY(0);
+      transform: translateY(0) scale(1);
     }
 
     .eyebrow {
@@ -184,7 +190,7 @@
 
     .hero {
       text-align: center;
-      padding-top: 72px;
+      padding-top: 68px;
     }
     .hero h1 {
       font-size: clamp(32px, 5.4vw, 50px);
@@ -200,11 +206,11 @@
       margin: 0 4px;
     }
     .hero-photo {
-      margin: 32px auto 0;
+      margin: 30px auto 0;
       width: 100%;
-      max-width: 520px;
+      max-width: 500px;
       aspect-ratio: 4 / 5;
-      border-radius: 240px 240px 16px 16px;
+      border-radius: 240px 240px 18px 18px;
       overflow: hidden;
       border: 6px solid var(--surface);
       box-shadow: 0 20px 50px rgba(43, 38, 35, 0.14);
@@ -213,10 +219,67 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center top;
       display: block;
-      transition: transform 1.2s ease;
+      transition: transform 0.35s ease-out;
+      will-change: transform;
     }
-    .hero-photo:hover img { transform: scale(1.03); }
+
+    .gallery-grid {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .gallery-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 10px 10px 16px;
+      box-shadow: 0 12px 28px rgba(43, 38, 35, 0.06);
+      opacity: 0;
+      transform: translateY(36px) rotate(var(--tilt, 0deg));
+      transition: opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1), transform 0.85s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
+      will-change: transform, opacity;
+    }
+    .gallery-card:nth-child(odd) { --tilt: -1.2deg; }
+    .gallery-card:nth-child(even) { --tilt: 1.2deg; transition-delay: 0.12s; }
+    .gallery-card.visible {
+      opacity: 1;
+      transform: translateY(0) rotate(0deg);
+    }
+    .gallery-frame {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .gallery-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 18%;
+      display: block;
+      transition: transform 0.45s ease-out;
+      will-change: transform;
+    }
+    .gallery-card:hover .gallery-frame img {
+      transform: scale(1.04);
+    }
+    .gallery-caption {
+      margin-top: 12px;
+      text-align: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 19px;
+      color: var(--ink);
+    }
+    .gallery-caption small {
+      display: block;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
 
     .families {
       display: grid;
@@ -357,30 +420,123 @@
       text-align: center;
       position: relative;
     }
-    .qr-placeholder {
-      width: 190px;
-      height: 190px;
-      margin: 16px auto;
-      border: 1px dashed var(--gold);
-      border-radius: 12px;
-      display: grid;
-      place-items: center;
+    .qr-frame {
+      width: 220px;
+      aspect-ratio: 3 / 4;
+      margin: 14px auto;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
       background: var(--bg);
-      font-size: 12px;
-      color: var(--muted);
-      padding: 12px;
+    }
+    .qr-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .bottom-dock {
+      position: fixed;
+      bottom: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 82;
+      width: min(92vw, 520px);
+      background: rgba(43, 38, 35, 0.94);
+      color: #f7f1e8;
+      border: 1px solid rgba(182, 141, 64, 0.35);
+      border-radius: 999px;
+      padding: 8px 10px 8px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.24);
+    }
+    .dock-rsvp-link {
+      color: #f7f1e8;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+      white-space: nowrap;
+      transition: color 0.2s ease;
+    }
+    .dock-rsvp-link:hover { color: #e5c37b; }
+    .heart-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(255, 255, 255, 0.1);
+      color: #f7f1e8;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 999px;
+      padding: 8px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: transform 0.16s ease, background 0.2s ease, border-color 0.2s ease;
+    }
+    .heart-btn:hover {
+      background: rgba(255, 255, 255, 0.16);
+      border-color: rgba(229, 195, 123, 0.55);
+    }
+    .heart-btn:active { transform: scale(0.94); }
+    .heart-btn .heart-icon {
+      color: #ff6b81;
+      font-size: 14px;
+      line-height: 1;
+      transition: transform 0.25s ease;
+    }
+    .heart-btn.pulsing .heart-icon { transform: scale(1.35); }
+    .heart-count { color: #ff7b8e; font-weight: 700; }
+
+    .floating-heart {
+      position: fixed;
+      pointer-events: none;
+      z-index: 92;
+      color: #ff5e78;
+      font-size: 20px;
+      transform: translate(-50%, -50%);
+      animation: floatHeartUp 1.05s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      text-shadow: 0 4px 12px rgba(255, 94, 120, 0.35);
+      will-change: transform, opacity;
+    }
+    @keyframes floatHeartUp {
+      0% {
+        opacity: 0.95;
+        transform: translate(-50%, -50%) translateX(0px) scale(0.75) rotate(0deg);
+      }
+      50% {
+        opacity: 0.9;
+        transform: translate(-50%, -95%) translateX(var(--drift, 12px)) scale(1.15) rotate(var(--rot, 10deg));
+      }
+      100% {
+        opacity: 0;
+        transform: translate(-50%, -155%) translateX(calc(var(--drift, 12px) * -0.5)) scale(0.95) rotate(calc(var(--rot, 10deg) * -1));
+      }
     }
 
     @media (max-width: 600px) {
       .hero h1 { font-size: clamp(24px, 6.2vw, 32px); }
+      .gallery-grid { grid-template-columns: 1fr; gap: 22px; }
       .families { grid-template-columns: 1fr; }
       .event-item { grid-template-columns: 1fr; gap: 4px; }
-      .music-fab { bottom: 16px; right: 16px; }
+      .bottom-dock {
+        bottom: 14px;
+        width: calc(100% - 24px);
+        padding: 7px 8px 7px 16px;
+      }
+      .music-fab { bottom: 76px; right: 14px; }
     }
   </style>
 </head>
 <body>
 
+  <div class="scroll-bar" id="scroll-bar"></div>
   <canvas id="petal-canvas"></canvas>
   <audio id="bg-audio" src="./moi-duyen-vang.mp3" loop preload="auto"></audio>
 
@@ -401,9 +557,59 @@
     <section class="hero reveal">
       <span class="eyebrow">Ngày Chung Đôi</span>
       <h1 id="hero-names">Viết Khiêm <span class="amp">&amp;</span> Hồng Nhung</h1>
-      <p style="color: var(--muted);" id="hero-subtitle">Trân trọng kính mời</p>
+      <p style="color: var(--muted);" id="hero-subtitle">Trân trọng kính mời bạn tới dự ngày chung đôi của chúng mình</p>
       <div class="hero-photo">
-        <img id="hero-img" src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=80" alt="Ảnh cưới" />
+        <img id="hero-img" src="./DSC02927.jpg" alt="Ảnh cưới Viết Khiêm & Hồng Nhung" />
+      </div>
+    </section>
+
+    <section class="reveal">
+      <div style="text-align: center;">
+        <span class="eyebrow">Khoảnh Khắc Yêu Thương</span>
+        <h2 class="serif" style="font-size: 36px;">Album Kỷ Niệm Của Chúng Mình</h2>
+        <p style="color: var(--muted); font-size: 14px; margin-top: 4px;">Lướt nhẹ để ngắm từng khoảnh khắc đáng nhớ trước ngày trọng đại</p>
+      </div>
+
+      <div class="gallery-grid" id="gallery-grid">
+        <figure class="gallery-card">
+          <div class="gallery-frame">
+            <img src="./DSC02621.jpg" alt="Khoảnh khắc 1 — Viết Khiêm & Hồng Nhung" />
+          </div>
+          <figcaption class="gallery-caption">
+            Nhịp Đập Đồng Điệu
+            <small>Những cái nhìn dịu dàng và nụ cười rạng rỡ</small>
+          </figcaption>
+        </figure>
+
+        <figure class="gallery-card">
+          <div class="gallery-frame">
+            <img src="./DSC02743.jpg" alt="Khoảnh khắc 2 — Viết Khiêm & Hồng Nhung" />
+          </div>
+          <figcaption class="gallery-caption">
+            Tựa Vai Bình Yên
+            <small>Dịu dàng trong từng khung hình thanh khiết</small>
+          </figcaption>
+        </figure>
+
+        <figure class="gallery-card">
+          <div class="gallery-frame">
+            <img src="./DSC03049.jpg" alt="Khoảnh khắc 3 — Viết Khiêm & Hồng Nhung" />
+          </div>
+          <figcaption class="gallery-caption">
+            Nắm Tay Dưới Nắng Mai
+            <small>Cùng nhau bước sang trang mới cuộc đời</small>
+          </figcaption>
+        </figure>
+
+        <figure class="gallery-card">
+          <div class="gallery-frame">
+            <img src="./DSC03326.jpg" alt="Khoảnh khắc 4 — Viết Khiêm & Hồng Nhung" />
+          </div>
+          <figcaption class="gallery-caption">
+            Lời Hẹn Trăm Năm
+            <small>Hạnh phúc trọn vẹn trong vòng hoa trắng</small>
+          </figcaption>
+        </figure>
       </div>
     </section>
 
@@ -456,7 +662,7 @@
       </div>
     </section>
 
-    <section class="reveal">
+    <section class="reveal" id="rsvp-section">
       <div style="text-align: center;">
         <span class="eyebrow">Phúc Đáp &amp; Chúc Phúc</span>
         <h2 class="serif" style="font-size: 36px;">Xác Nhận Tham Dự &amp; Lời Chúc</h2>
@@ -480,27 +686,42 @@
   <div class="modal" id="gift-modal" onclick="if(event.target===this) toggleGiftModal(false)">
     <div class="modal-box">
       <h3 class="serif" style="font-size: 28px;">Hộp Mừng Cưới</h3>
-      <p style="font-size: 13px; color: var(--muted);">Quét mã QR hoặc sao chép số tài khoản bên dưới</p>
-      <div class="qr-placeholder" id="qr-box">
-        Chèn ảnh mã QR ngân hàng của bạn vào đây (thẻ &lt;img&gt;)
+      <p style="font-size: 13px; color: var(--muted);">Quét mã QR TPBank hoặc sao chép số tài khoản bên dưới</p>
+      <div class="qr-frame" id="qr-box">
+        <img id="qr-img" src="./34eb2b17-35ea-4b3a-bdc4-a7fada0ab2fe.jpg" alt="Mã QR TPBank — PHAM VIET KHIEM — 10004772063" />
       </div>
-      <p style="font-size: 14px;"><strong id="bank-info">Vietcombank — 0031000123456</strong></p>
+      <p style="font-size: 14px;"><strong id="bank-info">TPBank — 1000 4772 063</strong></p>
       <p style="font-size: 13px; color: var(--muted); margin-bottom: 16px;" id="bank-owner">PHAM VIET KHIEM</p>
       <button type="button" class="btn" style="width: 100%;" onclick="toggleGiftModal(false)">Đóng</button>
     </div>
+  </div>
+
+  <div class="bottom-dock" role="navigation" aria-label="Điều hướng nhanh và bắn tim">
+    <a href="#rsvp-section" class="dock-rsvp-link">Xác nhận &amp; lời chúc</a>
+    <button type="button" class="heart-btn" id="heart-btn" onclick="shootHearts(event)" aria-label="Bắn tim chúc phúc">
+      <span class="heart-icon">♥</span>
+      <span>Bắn tim</span>
+      <span class="heart-count" id="heart-count">0</span>
+    </button>
   </div>
 
   <script>
     const WEDDING_CONFIG = {
       initials: "K & N",
       coupleNames: "Viết Khiêm & Hồng Nhung",
-      subtitle: "Trân trọng kính mời",
+      subtitle: "Trân trọng kính mời bạn tới dự ngày chung đôi của chúng mình",
       eventISO: "2026-12-13T09:30:00+07:00",
       displayDate: "09:30 — Chủ nhật, Ngày 13 Tháng 12 Năm 2026",
       shortDate: "Chủ nhật, 13.12.2026 — Hải Phòng",
       venue: "Nhà văn hóa thôn Bắc Bình, xã Nguyễn Bỉnh Khiêm, Thành phố Hải Phòng",
       mapUrl: "https://maps.google.com/?q=Nha+van+hoa+thon+Bac+Binh+Hai+Phong",
-      heroPhoto: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=80",
+      heroPhoto: "./DSC02927.jpg",
+      gallery: [
+        { src: "./DSC02621.jpg", title: "Nhịp Đập Đồng Điệu", note: "Những cái nhìn dịu dàng và nụ cười rạng rỡ" },
+        { src: "./DSC02743.jpg", title: "Tựa Vai Bình Yên", note: "Dịu dàng trong từng khung hình thanh khiết" },
+        { src: "./DSC03049.jpg", title: "Nắm Tay Dưới Nắng Mai", note: "Cùng nhau bước sang trang mới cuộc đời" },
+        { src: "./DSC03326.jpg", title: "Lời Hẹn Trăm Năm", note: "Hạnh phúc trọn vẹn trong vòng hoa trắng" }
+      ],
       groom: {
         name: "Phạm Viết Khiêm",
         role: "Út nam",
@@ -513,7 +734,11 @@
         parents: "Bố: Phạm Thanh Sơn & Mẹ: Phạm Kim Xuân",
         address: "Quận Hồng Bàng, Thành phố Hải Phòng"
       },
-      bank: { info: "Vietcombank — 0031000123456", owner: "PHAM VIET KHIEM" }
+      bank: {
+        qrPhoto: "./34eb2b17-35ea-4b3a-bdc4-a7fada0ab2fe.jpg",
+        info: "TPBank — 1000 4772 063",
+        owner: "PHAM VIET KHIEM"
+      }
     };
 
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwaqig4xd8XS8FiBdzVUJgPpsdqQ_y9WZXrgPIByBEb1y4EJc5d8Ug0g9QJ6FRSX3LUEQ/exec";
@@ -527,6 +752,21 @@
     document.getElementById("map-link").href = WEDDING_CONFIG.mapUrl;
     document.getElementById("hero-img").src = WEDDING_CONFIG.heroPhoto;
 
+    const galleryCards = document.querySelectorAll("#gallery-grid .gallery-card");
+    WEDDING_CONFIG.gallery.forEach((item, idx) => {
+      const card = galleryCards[idx];
+      if (!card) return;
+      const img = card.querySelector("img");
+      const cap = card.querySelector(".gallery-caption");
+      if (img) {
+        img.src = item.src;
+        img.alt = `${item.title} — ${WEDDING_CONFIG.coupleNames}`;
+      }
+      if (cap) {
+        cap.innerHTML = `${item.title}<small>${item.note}</small>`;
+      }
+    });
+
     document.getElementById("groom-name").textContent = WEDDING_CONFIG.groom.name;
     document.getElementById("groom-parents").textContent = WEDDING_CONFIG.groom.parents;
     document.getElementById("groom-address").textContent = WEDDING_CONFIG.groom.address;
@@ -535,6 +775,7 @@
     document.getElementById("bride-parents").textContent = WEDDING_CONFIG.bride.parents;
     document.getElementById("bride-address").textContent = WEDDING_CONFIG.bride.address;
 
+    document.getElementById("qr-img").src = WEDDING_CONFIG.bank.qrPhoto;
     document.getElementById("bank-info").textContent = WEDDING_CONFIG.bank.info;
     document.getElementById("bank-owner").textContent = WEDDING_CONFIG.bank.owner;
 
@@ -559,6 +800,7 @@
     });
 
     async function startMusic() {
+      if (!bgAudio.getAttribute("src")) return;
       try {
         bgAudio.volume = 0.85;
         await bgAudio.play();
@@ -568,6 +810,7 @@
     }
 
     async function toggleMusic() {
+      if (!bgAudio.getAttribute("src")) return;
       if (bgAudio.paused) {
         try {
           bgAudio.volume = 0.85;
@@ -597,8 +840,9 @@
         }
       });
     }, { threshold: 0.12 });
-    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+    document.querySelectorAll(".reveal, .gallery-card").forEach((el) => observer.observe(el));
 
+    let spawnSwipeEffect = null;
     (function initPetals() {
       const canvas = document.getElementById("petal-canvas");
       const ctx = canvas.getContext("2d");
@@ -618,23 +862,59 @@
         vx: -0.4 + Math.random() * 0.8,
         angle: Math.random() * Math.PI * 2,
         spin: -0.02 + Math.random() * 0.04,
-        alpha: 0.25 + Math.random() * 0.35
+        alpha: 0.25 + Math.random() * 0.35,
+        burst: false,
+        life: 1
       }));
+
+      spawnSwipeEffect = function (x, y, count = 4) {
+        for (let i = 0; i < count; i++) {
+          const spreadAngle = Math.random() * Math.PI * 2;
+          const speed = 1.2 + Math.random() * 2.6;
+          petals.push({
+            x,
+            y,
+            r: 4.5 + Math.random() * 4.5,
+            vy: Math.sin(spreadAngle) * speed - 0.6,
+            vx: Math.cos(spreadAngle) * speed,
+            angle: Math.random() * Math.PI * 2,
+            spin: -0.08 + Math.random() * 0.16,
+            alpha: 0.75,
+            burst: true,
+            life: 1
+          });
+        }
+        if (petals.length > 75) {
+          petals.splice(24, petals.length - 75);
+        }
+      };
 
       function draw() {
         ctx.clearRect(0, 0, w, h);
-        for (const p of petals) {
+        for (let i = petals.length - 1; i >= 0; i--) {
+          const p = petals[i];
           p.y += p.vy;
           p.x += p.vx + Math.sin(p.angle) * 0.35;
           p.angle += p.spin;
-          if (p.y > h + 12) { p.y = -12; p.x = Math.random() * w; }
-          if (p.x > w + 12) p.x = -12;
-          if (p.x < -12) p.x = w + 12;
 
+          if (p.burst) {
+            p.vy += 0.04;
+            p.life -= 0.022;
+            if (p.life <= 0) {
+              petals.splice(i, 1);
+              continue;
+            }
+          } else {
+            if (p.y > h + 12) { p.y = -12; p.x = Math.random() * w; }
+            if (p.x > w + 12) p.x = -12;
+            if (p.x < -12) p.x = w + 12;
+          }
+
+          const currentAlpha = p.burst ? p.alpha * p.life : p.alpha;
           ctx.save();
           ctx.translate(p.x, p.y);
           ctx.rotate(p.angle);
-          ctx.fillStyle = `rgba(198, 152, 74, ${p.alpha})`;
+          ctx.fillStyle = `rgba(198, 152, 74, ${Math.max(0, currentAlpha)})`;
           ctx.beginPath();
           ctx.ellipse(0, 0, p.r, p.r * 0.55, 0, 0, Math.PI * 2);
           ctx.fill();
@@ -644,6 +924,92 @@
       }
       draw();
     })();
+
+    const scrollBar = document.getElementById("scroll-bar");
+    const heroImg = document.getElementById("hero-img");
+    const galleryImgs = document.querySelectorAll(".gallery-frame img");
+
+    function updateScrollEffects() {
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = maxScroll > 0 ? Math.min(100, Math.max(0, (window.scrollY / maxScroll) * 100)) : 0;
+      if (scrollBar) scrollBar.style.width = `${pct}%`;
+
+      if (heroImg) {
+        const offset = Math.min(24, window.scrollY * 0.05);
+        heroImg.style.transform = `translateY(${offset}px) scale(1.03)`;
+      }
+
+      galleryImgs.forEach((img) => {
+        const rect = img.getBoundingClientRect();
+        const centerDist = (rect.top + rect.height / 2 - window.innerHeight / 2) / window.innerHeight;
+        const shift = Math.max(-14, Math.min(14, -centerDist * 22));
+        img.style.transform = `translateY(${shift}px) scale(1.06)`;
+      });
+    }
+
+    let lastSwipeTime = 0;
+    window.addEventListener("touchmove", (e) => {
+      const touch = e.touches[0];
+      if (!touch || !spawnSwipeEffect) return;
+      const now = Date.now();
+      if (now - lastSwipeTime > 55) {
+        lastSwipeTime = now;
+        spawnSwipeEffect(touch.clientX, touch.clientY, 2);
+      }
+    }, { passive: true });
+
+    window.addEventListener("touchstart", (e) => {
+      const touch = e.touches[0];
+      if (touch && spawnSwipeEffect) {
+        spawnSwipeEffect(touch.clientX, touch.clientY, 5);
+      }
+    }, { passive: true });
+
+    window.addEventListener("scroll", updateScrollEffects, { passive: true });
+    updateScrollEffects();
+
+    const HEART_STORAGE_KEY = "wedding_heart_count_v2";
+    const BASE_HEARTS = 0;
+    const heartCountEl = document.getElementById("heart-count");
+    const heartBtnEl = document.getElementById("heart-btn");
+
+    let totalHearts = Number(localStorage.getItem(HEART_STORAGE_KEY) || BASE_HEARTS);
+    if (Number.isNaN(totalHearts) || totalHearts < 0) totalHearts = BASE_HEARTS;
+    if (heartCountEl) heartCountEl.textContent = String(totalHearts);
+
+    function spawnHeartParticle(x, y) {
+      const el = document.createElement("span");
+      const symbols = ["♥", "❤", "💕"];
+      el.className = "floating-heart";
+      el.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+      el.style.left = `${x + (-18 + Math.random() * 36)}px`;
+      el.style.top = `${y + (-8 + Math.random() * 14)}px`;
+      el.style.fontSize = `${16 + Math.random() * 12}px`;
+      el.style.setProperty("--drift", `${(-20 + Math.random() * 40).toFixed(1)}px`);
+      el.style.setProperty("--rot", `${(-18 + Math.random() * 36).toFixed(1)}deg`);
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), 1100);
+    }
+
+    function shootHearts(e) {
+      totalHearts += 1;
+      localStorage.setItem(HEART_STORAGE_KEY, String(totalHearts));
+      if (heartCountEl) heartCountEl.textContent = String(totalHearts);
+
+      if (heartBtnEl) {
+        heartBtnEl.classList.remove("pulsing");
+        void heartBtnEl.offsetWidth;
+        heartBtnEl.classList.add("pulsing");
+      }
+
+      const rect = heartBtnEl ? heartBtnEl.getBoundingClientRect() : null;
+      const originX = (e && e.clientX) ? e.clientX : (rect ? rect.left + rect.width / 2 : window.innerWidth * 0.75);
+      const originY = (e && e.clientY) ? e.clientY : (rect ? rect.top : window.innerHeight - 50);
+
+      for (let i = 0; i < 6; i++) {
+        setTimeout(() => spawnHeartParticle(originX, originY), i * 65);
+      }
+    }
 
     const targetTime = new Date(WEDDING_CONFIG.eventISO).getTime();
     function updateCountdown() {
