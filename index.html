@@ -19,14 +19,14 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Lora:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet" />
   <style>
     :root {
       --bg: #fff6f8;
       --bg-soft: #fdeef2;
       --surface: #ffffff;
       --ink: #462c34;
-      --muted: #8a6d76;
+      --muted: #7d6069;
       --rose: #d66885;
       --rose-dark: #b34966;
       --rose-light: #f9d8e1;
@@ -37,7 +37,7 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-family: 'Be Vietnam Pro', sans-serif;
       background: linear-gradient(180deg, #fff6f8 0%, #fffafb 45%, #fdf0f4 100%);
       color: var(--ink);
       line-height: 1.65;
@@ -46,7 +46,7 @@
     }
 
     h1, h2, h3, .serif {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Lora', serif;
       font-weight: 600;
     }
 
@@ -101,7 +101,7 @@
     .music-label {
       font-size: 12px;
       font-weight: 500;
-      letter-spacing: 0.3px;
+      letter-spacing: 0.2px;
       white-space: nowrap;
     }
     @keyframes spin {
@@ -109,7 +109,6 @@
       to { transform: rotate(360deg); }
     }
 
-    /* Màn bìa mở thiệp & hiệu ứng chuyển cảnh mượt */
     #cover {
       position: fixed;
       inset: 0;
@@ -179,9 +178,9 @@
       border-radius: 50%;
       display: grid;
       place-items: center;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 28px;
-      letter-spacing: 2px;
+      font-family: 'Lora', serif;
+      font-size: 26px;
+      letter-spacing: 1.5px;
       color: var(--rose-dark);
       margin: 0 auto 18px;
       background: rgba(255, 255, 255, 0.85);
@@ -219,9 +218,9 @@
       color: #fff;
       border: 1px solid rgba(255, 255, 255, 0.45);
       border-radius: 999px;
-      font-size: 14px;
+      font-size: 13.5px;
       font-weight: 600;
-      letter-spacing: 1.2px;
+      letter-spacing: 1px;
       cursor: pointer;
       box-shadow: 0 10px 26px rgba(179, 73, 102, 0.35);
       transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s ease;
@@ -296,8 +295,8 @@
     }
 
     .eyebrow {
-      font-size: 12px;
-      letter-spacing: 2.6px;
+      font-size: 11.5px;
+      letter-spacing: 2.2px;
       text-transform: uppercase;
       color: var(--rose-dark);
       margin-bottom: 10px;
@@ -310,8 +309,8 @@
       padding-top: 64px;
     }
     .hero h1 {
-      font-size: clamp(32px, 5.4vw, 52px);
-      line-height: 1.15;
+      font-size: clamp(30px, 5vw, 48px);
+      line-height: 1.2;
       margin: 12px 0;
       color: var(--ink);
       white-space: nowrap;
@@ -382,7 +381,7 @@
       box-shadow: 0 16px 34px rgba(179, 73, 102, 0.12);
     }
     .card h3 {
-      font-size: 26px;
+      font-size: 25px;
       margin-bottom: 10px;
       color: var(--rose-dark);
     }
@@ -460,16 +459,16 @@
     .gallery-caption {
       margin-top: 13px;
       text-align: center;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 21px;
+      font-family: 'Lora', serif;
+      font-size: 20px;
       color: var(--ink);
     }
     .gallery-caption small {
       display: block;
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-family: 'Be Vietnam Pro', sans-serif;
       font-size: 12px;
       color: var(--muted);
-      margin-top: 2px;
+      margin-top: 3px;
     }
 
     .carousel-nav {
@@ -539,8 +538,8 @@
       box-shadow: 0 10px 26px rgba(179, 73, 102, 0.07);
     }
     .lunar-time-top {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 24px;
+      font-family: 'Lora', serif;
+      font-size: 23px;
       font-weight: 700;
       color: var(--rose-dark);
       margin-bottom: 8px;
@@ -553,29 +552,29 @@
       padding: 8px 0;
       border-top: 1px solid var(--line);
       border-bottom: 1px solid var(--line);
-      font-size: 13px;
+      font-size: 12.5px;
       font-weight: 600;
-      letter-spacing: 1px;
+      letter-spacing: 0.8px;
       color: var(--ink);
     }
     .lunar-day-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 36px;
+      font-family: 'Lora', serif;
+      font-size: 34px;
       font-weight: 700;
       line-height: 1;
       color: var(--rose-dark);
     }
     .lunar-year-label {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 22px;
+      font-family: 'Lora', serif;
+      font-size: 21px;
       font-weight: 700;
       color: var(--ink);
       margin-top: 6px;
     }
     .lunar-sub-label {
-      font-size: 12px;
+      font-size: 11.5px;
       font-weight: 600;
-      letter-spacing: 0.6px;
+      letter-spacing: 0.4px;
       text-transform: uppercase;
       color: var(--rose-dark);
       margin-top: 2px;
@@ -588,8 +587,8 @@
       background: linear-gradient(180deg, #fffcfd 0%, #fff4f7 100%);
     }
     .month-cal-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 22px;
+      font-family: 'Lora', serif;
+      font-size: 21px;
       font-weight: 700;
       color: var(--rose-dark);
       margin-bottom: 10px;
@@ -625,7 +624,6 @@
       color: #c7aeb6;
       font-size: 12px;
     }
-    /* Sửa triệt để lỗi mất số 13: tách lớp trái tim nền và lớp số trắng rõ nét ở trên */
     .cal-day.wedding-day {
       position: relative;
       background: transparent;
@@ -672,8 +670,8 @@
     .time-box:hover { transform: translateY(-2px); }
     .time-box span {
       display: block;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 36px;
+      font-family: 'Lora', serif;
+      font-size: 34px;
       font-weight: 700;
       color: var(--rose-dark);
       line-height: 1;
@@ -681,7 +679,7 @@
     .time-box small {
       font-size: 11px;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 0.8px;
       color: var(--muted);
     }
 
@@ -702,8 +700,8 @@
       box-shadow: 0 8px 22px rgba(179, 73, 102, 0.05);
     }
     .event-time {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 23px;
+      font-family: 'Lora', serif;
+      font-size: 22px;
       font-weight: 700;
       color: var(--rose-dark);
     }
@@ -770,7 +768,7 @@
     .modal.active { display: grid; }
     .modal-box {
       background: var(--surface);
-      max-width: 400px;
+      max-width: 420px;
       width: 100%;
       border-radius: var(--radius);
       padding: 28px;
@@ -791,6 +789,21 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      display: block;
+    }
+    .map-preview-frame {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      margin: 14px 0;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+      background: var(--bg);
+    }
+    .map-preview-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
       display: block;
     }
 
@@ -909,7 +922,7 @@
     <div class="cover-card">
       <div class="monogram" id="cover-initials">K &amp; N</div>
       <span class="eyebrow" id="cover-eyebrow">Trân trọng kính mời</span>
-      <h2 class="serif" style="font-size: 36px; line-height: 1.15; margin: 4px 0;" id="cover-names">Viết Khiêm &amp; Hồng Nhung</h2>
+      <h2 class="serif" style="font-size: 34px; line-height: 1.2; margin: 4px 0;" id="cover-names">Viết Khiêm &amp; Hồng Nhung</h2>
       <div class="cover-rule"><span>♥</span></div>
       <p style="color: var(--muted); font-size: 14px;" id="cover-date">Chủ nhật, 13.12.2026 — Hải Phòng</p>
       <button type="button" class="btn-open" onclick="openInvite()">Mở Thiệp Mời</button>
@@ -928,11 +941,10 @@
       <div class="heart-divider" aria-hidden="true"><span>♥</span></div>
     </section>
 
-    <!-- Đưa thông tin Gia đình hai bên lên trên Album ảnh -->
     <section class="reveal">
       <div style="text-align: center; margin-bottom: 28px;">
         <span class="eyebrow">Gia Đình Hai Bên</span>
-        <h2 class="serif" style="font-size: 38px;">Trân Trọng Kính Mời</h2>
+        <h2 class="serif" style="font-size: 36px;">Trân Trọng Kính Mời</h2>
       </div>
       <div class="families">
         <div class="card">
@@ -951,11 +963,11 @@
       <div class="heart-divider" style="margin-top: 42px;" aria-hidden="true"><span>♥</span></div>
     </section>
 
-    <section class="reveal">
+    <section class="reveal" id="album-section">
       <div style="text-align: center;">
         <span class="eyebrow">Khoảnh Khắc Yêu Thương</span>
-        <h2 class="serif" style="font-size: 38px;">Album Kỷ Niệm Của Chúng Mình</h2>
-        <p style="color: var(--muted); font-size: 14px; margin-top: 4px;">Vuốt sang trái hoặc phải để ngắm từng khoảnh khắc đáng nhớ</p>
+        <h2 class="serif" style="font-size: 36px;">Album Kỷ Niệm Của Chúng Mình</h2>
+        <p style="color: var(--muted); font-size: 14px; margin-top: 4px;">Album đang tự động chạy — bạn cũng có thể vuốt trái/phải để xem</p>
       </div>
 
       <div class="carousel-shell">
@@ -1017,8 +1029,9 @@
 
     <section class="reveal" style="text-align: center;">
       <span class="eyebrow">Thời Gian &amp; Địa Điểm</span>
-      <h2 class="serif" style="font-size: 38px;" id="display-date">09:30 — Chủ nhật, Ngày 13 Tháng 12 Năm 2026</h2>
+      <h2 class="serif" style="font-size: 36px;" id="display-date">09:30 — Chủ nhật, Ngày 13 Tháng 12 Năm 2026</h2>
       <p style="color: var(--muted); margin-top: 6px;" id="venue-name">Nhà văn hóa thôn Bắc Bình, xã Nguyễn Bỉnh Khiêm, Thành phố Hải Phòng</p>
+      <p style="color: var(--rose-dark); font-size: 13px; font-weight: 500; margin-top: 4px;" id="map-address-text">MHF3+RG3, Nguyễn Bỉnh Khiêm, Hải Phòng, Việt Nam</p>
 
       <div class="lunar-date-banner">
         <div class="lunar-time-top">09:30</div>
@@ -1108,7 +1121,7 @@
       </div>
 
       <div style="margin-top: 24px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
-        <a id="map-link" href="https://maps.google.com/?q=Nha+van+hoa+thon+Bac+Binh+Hai+Phong" target="_blank" rel="noopener" class="btn">Xem Bản Đồ Chỉ Đường</a>
+        <button type="button" id="map-btn" class="btn" onclick="toggleMapModal(true)">Xem Bản Đồ Chỉ Đường</button>
         <button type="button" class="btn btn-outline" onclick="toggleGiftModal(true)">Gửi Mừng Cưới</button>
       </div>
       <div class="heart-divider" style="margin-top: 42px;" aria-hidden="true"><span>♥</span></div>
@@ -1117,7 +1130,7 @@
     <section class="reveal" id="rsvp-section">
       <div style="text-align: center;">
         <span class="eyebrow">Phúc Đáp &amp; Chúc Phúc</span>
-        <h2 class="serif" style="font-size: 38px;">Xác Nhận Tham Dự &amp; Lời Chúc</h2>
+        <h2 class="serif" style="font-size: 36px;">Xác Nhận Tham Dự &amp; Lời Chúc</h2>
         <p style="color: var(--muted); font-size: 14px;">Sự hiện diện của bạn là niềm vinh hạnh lớn nhất của gia đình chúng tôi.</p>
       </div>
 
@@ -1134,6 +1147,27 @@
       <p id="rsvp-status" style="margin-top: 14px; text-align: center; font-size: 14px; color: var(--rose-dark); font-weight: 600;"></p>
     </section>
   </main>
+
+  <div class="modal" id="map-modal" onclick="if(event.target===this) toggleMapModal(false)">
+    <div class="modal-box">
+      <h3 class="serif" style="font-size: 26px; color: var(--rose-dark);">Bản Đồ Chỉ Đường</h3>
+      <p style="font-size: 13px; color: var(--ink); font-weight: 600; margin-top: 6px;">MHF3+RG3, Nguyễn Bỉnh Khiêm, Hải Phòng, Việt Nam</p>
+      <p style="font-size: 12.5px; color: var(--muted); margin-top: 2px;">Nhà văn hóa thôn Bắc Bình, xã Nguyễn Bỉnh Khiêm, Thành phố Hải Phòng</p>
+      <div class="map-preview-frame">
+        <iframe
+          id="map-iframe"
+          src="https://maps.google.com/maps?q=MHF3%2BRG3%2C%20Nguy%E1%BB%85n%20B%E1%BB%89nh%20Khi%C3%AAm%2C%20H%E1%BA%A3i%20Ph%C3%B2ng%2C%20Vi%E1%BB%87t%20Nam&t=&z=16&ie=UTF8&iwloc=&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Bản đồ MHF3+RG3, Nguyễn Bỉnh Khiêm, Hải Phòng, Việt Nam">
+        </iframe>
+      </div>
+      <div style="display: grid; gap: 10px;">
+        <a id="map-external-link" href="https://www.google.com/maps/search/?api=1&query=MHF3%2BRG3%2C+Nguy%E1%BB%85n+B%E1%BB%89nh+Khi%C3%AAm%2C+H%E1%BA%A3i+Ph%C3%B2ng%2C+Vi%E1%BB%87t+Nam" target="_blank" rel="noopener" class="btn">Mở Google Maps Chỉ Đường</a>
+        <button type="button" class="btn btn-outline" onclick="toggleMapModal(false)">Đóng</button>
+      </div>
+    </div>
+  </div>
 
   <div class="modal" id="gift-modal" onclick="if(event.target===this) toggleGiftModal(false)">
     <div class="modal-box">
@@ -1166,7 +1200,8 @@
       displayDate: "09:30 — Chủ nhật, Ngày 13 Tháng 12 Năm 2026",
       shortDate: "Chủ nhật, 13.12.2026 — Hải Phòng",
       venue: "Nhà văn hóa thôn Bắc Bình, xã Nguyễn Bỉnh Khiêm, Thành phố Hải Phòng",
-      mapUrl: "https://maps.google.com/?q=Nha+van+hoa+thon+Bac+Binh+Hai+Phong",
+      mapAddress: "MHF3+RG3, Nguyễn Bỉnh Khiêm, Hải Phòng, Việt Nam",
+      mapUrl: "https://www.google.com/maps/search/?api=1&query=MHF3%2BRG3%2C+Nguy%E1%BB%85n+B%E1%BB%89nh+Khi%C3%AAm%2C+H%E1%BA%A3i+Ph%C3%B2ng%2C+Vi%E1%BB%87t+Nam",
       heroPhoto: "./DSC02927.jpg",
       gallery: [
         { src: "./DSC02621.jpg", title: "Nhịp Đập Đồng Điệu", note: "Những cái nhìn dịu dàng và nụ cười rạng rỡ" },
@@ -1201,7 +1236,8 @@
     document.getElementById("hero-subtitle").textContent = WEDDING_CONFIG.subtitle;
     document.getElementById("display-date").textContent = WEDDING_CONFIG.displayDate;
     document.getElementById("venue-name").textContent = WEDDING_CONFIG.venue;
-    document.getElementById("map-link").href = WEDDING_CONFIG.mapUrl;
+    document.getElementById("map-address-text").textContent = WEDDING_CONFIG.mapAddress;
+    document.getElementById("map-external-link").href = WEDDING_CONFIG.mapUrl;
     document.getElementById("hero-img").src = WEDDING_CONFIG.heroPhoto;
 
     const galleryTrack = document.getElementById("gallery-grid");
@@ -1252,14 +1288,49 @@
       galleryTrack.scrollTo({ left: targetLeft, behavior: "smooth" });
     }
 
+    let autoSlideTimer = null;
+    let pauseAutoSlideTimeout = null;
+
+    function startAutoSlide() {
+      stopAutoSlide();
+      if (!galleryCards.length) return;
+      autoSlideTimer = setInterval(() => {
+        if (document.hidden) return;
+        const nextIdx = (getActiveSlideIndex() + 1) % galleryCards.length;
+        goToSlide(nextIdx);
+      }, 3400);
+    }
+
+    function stopAutoSlide() {
+      if (autoSlideTimer) {
+        clearInterval(autoSlideTimer);
+        autoSlideTimer = null;
+      }
+    }
+
+    function pauseAutoSlideTemporarily(delay = 5500) {
+      stopAutoSlide();
+      if (pauseAutoSlideTimeout) clearTimeout(pauseAutoSlideTimeout);
+      pauseAutoSlideTimeout = setTimeout(startAutoSlide, delay);
+    }
+
     function scrollGallery(dir) {
+      pauseAutoSlideTemporarily(6000);
       const nextIdx = Math.max(0, Math.min(galleryCards.length - 1, getActiveSlideIndex() + dir));
       goToSlide(nextIdx);
     }
 
     if (galleryTrack) {
       galleryTrack.addEventListener("scroll", updateCarouselDots, { passive: true });
+      galleryTrack.addEventListener("touchstart", () => pauseAutoSlideTemporarily(6500), { passive: true });
+      galleryTrack.addEventListener("pointerdown", () => pauseAutoSlideTemporarily(6500), { passive: true });
+      galleryTrack.addEventListener("mouseenter", stopAutoSlide);
+      galleryTrack.addEventListener("mouseleave", () => pauseAutoSlideTemporarily(2000));
     }
+    carouselDots.forEach((dot) => {
+      dot.addEventListener("click", () => pauseAutoSlideTemporarily(6000));
+    });
+    startAutoSlide();
 
     document.getElementById("groom-name").textContent = WEDDING_CONFIG.groom.name;
     document.getElementById("groom-parents").textContent = WEDDING_CONFIG.groom.parents;
@@ -1337,6 +1408,10 @@
 
     function toggleGiftModal(show) {
       document.getElementById("gift-modal").classList.toggle("active", show);
+    }
+
+    function toggleMapModal(show) {
+      document.getElementById("map-modal").classList.toggle("active", show);
     }
 
     const observer = new IntersectionObserver((entries) => {
