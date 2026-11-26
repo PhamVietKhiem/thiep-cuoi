@@ -10,7 +10,7 @@
   <meta property="og:url" content="https://phamvietkhiem.github.io/thiep-cuoi/" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Thiệp mời — Viết Khiêm & Hồng Nhung" />
-  <meta property="og:description" content="Trân trọng kính mời bạn tới dự ngày chung đôi — 09:30 Chủ nhật, 13.12.2026 tại Nhà văn hóa thôn Bắc Bình, Hải Phòng." />
+  <meta property="og:description" content="Trân trọng báo tin lễ thành hôn của chúng tôi — 09:30 Chủ nhật, 13.12.2026 tại Nhà văn hóa thôn Bắc Bình, Hải Phòng." />
   <meta property="og:image" content="https://phamvietkhiem.github.io/thiep-cuoi/og-cover.jpg" />
   <meta property="og:image:type" content="image/jpeg" />
   <meta property="og:image:width" content="1200" />
@@ -68,45 +68,80 @@
       z-index: 50;
     }
 
+    /* Nút icon sóng nhạc chạy theo nhịp */
     .music-fab {
       position: fixed;
-      bottom: 22px;
-      right: 22px;
+      bottom: 82px;
+      right: 20px;
       z-index: 85;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background: rgba(70, 44, 52, 0.92);
-      color: #fff6f8;
-      border: 1px solid rgba(246, 166, 188, 0.55);
-      padding: 8px 16px 8px 8px;
-      border-radius: 999px;
-      cursor: pointer;
-      backdrop-filter: blur(8px);
-      box-shadow: 0 10px 25px rgba(179, 73, 102, 0.24);
-      transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), background 0.2s ease;
-    }
-    .music-fab:hover { transform: translateY(-2px) scale(1.02); background: #361f26; }
-    .disc {
-      width: 34px;
-      height: 34px;
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
-      background: radial-gradient(circle at center, #fff6f8 0 4px, var(--rose) 5px 11px, #462c34 12px 17px);
+      background: linear-gradient(145deg, #b88b5a 0%, #9b6f42 100%);
+      color: #ffffff;
+      border: 3px solid rgba(255, 255, 255, 0.92);
+      box-shadow: 0 10px 24px rgba(70, 44, 52, 0.24), 0 0 0 1px rgba(214, 104, 133, 0.25);
       display: grid;
       place-items: center;
-      animation: spin 6s linear infinite;
-      animation-play-state: paused;
+      cursor: pointer;
+      transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s ease, filter 0.2s ease;
     }
-    .music-fab.playing .disc { animation-play-state: running; }
-    .music-label {
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.2px;
-      white-space: nowrap;
+    .music-fab:hover {
+      transform: translateY(-2px) scale(1.04);
+      filter: brightness(1.04);
     }
-    @keyframes spin {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
+    .music-fab:active {
+      transform: scale(0.95);
+    }
+    .music-fab.playing {
+      box-shadow: 0 12px 28px rgba(179, 73, 102, 0.34), 0 0 0 6px rgba(214, 104, 133, 0.16);
+    }
+    .eq-bars {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      height: 20px;
+    }
+    .eq-bar {
+      width: 4px;
+      border-radius: 999px;
+      background: #ffffff;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.18);
+      transition: height 0.12s ease-out;
+    }
+    .eq-bar:nth-child(1) { height: 7px; }
+    .eq-bar:nth-child(2) { height: 15px; }
+    .eq-bar:nth-child(3) { height: 11px; }
+    .eq-bar:nth-child(4) { height: 4px; }
+
+    .music-fab.playing.eq-fallback .eq-bar:nth-child(1) {
+      animation: eqBounce1 0.72s ease-in-out infinite;
+    }
+    .music-fab.playing.eq-fallback .eq-bar:nth-child(2) {
+      animation: eqBounce2 0.56s ease-in-out infinite;
+    }
+    .music-fab.playing.eq-fallback .eq-bar:nth-child(3) {
+      animation: eqBounce3 0.64s ease-in-out infinite;
+    }
+    .music-fab.playing.eq-fallback .eq-bar:nth-child(4) {
+      animation: eqBounce4 0.8s ease-in-out infinite;
+    }
+    @keyframes eqBounce1 {
+      0%, 100% { height: 6px; }
+      50% { height: 17px; }
+    }
+    @keyframes eqBounce2 {
+      0%, 100% { height: 18px; }
+      50% { height: 7px; }
+    }
+    @keyframes eqBounce3 {
+      0%, 100% { height: 9px; }
+      50% { height: 19px; }
+    }
+    @keyframes eqBounce4 {
+      0%, 100% { height: 5px; }
+      50% { height: 14px; }
     }
 
     #cover {
@@ -387,7 +422,6 @@
     }
     .card p { font-size: 14px; color: var(--muted); }
 
-    /* Album lướt liên tục mượt mà, không giật */
     .carousel-shell {
       position: relative;
       margin-top: 26px;
@@ -527,7 +561,6 @@
       opacity: 0.85;
     }
 
-    /* Lịch âm dương tháng 12 / 2026 */
     .lunar-date-banner {
       max-width: 480px;
       margin: 18px auto 0;
@@ -913,9 +946,13 @@
   <canvas id="petal-canvas"></canvas>
   <audio id="bg-audio" src="./vay-cuoi.mp3" loop preload="auto"></audio>
 
-  <button type="button" class="music-fab" id="music-btn" onclick="toggleMusic()" aria-label="Bật tắt nhạc nền">
-    <span class="disc"></span>
-    <span class="music-label" id="music-text">Bật nhạc: Váy Cưới</span>
+  <button type="button" class="music-fab eq-fallback" id="music-btn" onclick="toggleMusic()" aria-label="Bật tắt nhạc nền" title="Bật / tắt nhạc">
+    <span class="eq-bars" aria-hidden="true">
+      <span class="eq-bar" id="eq-b1"></span>
+      <span class="eq-bar" id="eq-b2"></span>
+      <span class="eq-bar" id="eq-b3"></span>
+      <span class="eq-bar" id="eq-b4"></span>
+    </span>
   </button>
 
   <div id="cover">
@@ -933,7 +970,7 @@
     <section class="hero reveal">
       <span class="eyebrow">Ngày Chung Đôi</span>
       <h1 id="hero-names">Viết Khiêm <span class="amp">&amp;</span> Hồng Nhung</h1>
-      <p style="color: var(--muted);" id="hero-subtitle">Trân trọng kính mời bạn tới dự ngày chung đôi của chúng mình</p>
+      <p style="color: var(--muted);" id="hero-subtitle">Trân trọng báo tin lễ thành hôn của chúng tôi</p>
       <div class="hero-photo">
         <img id="hero-img" src="./DSC02927.jpg" alt="Ảnh cưới Viết Khiêm & Hồng Nhung" fetchpriority="high" decoding="async" />
       </div>
@@ -944,7 +981,7 @@
     <section class="reveal">
       <div style="text-align: center; margin-bottom: 28px;">
         <span class="eyebrow">Gia Đình Hai Bên</span>
-        <h2 class="serif" style="font-size: 36px;">Trân Trọng Báo Tin</h2>
+        <h2 class="serif" style="font-size: 36px;">Trân Trọng Báo Tin Lễ Thành Hôn Của Chúng Tôi</h2>
       </div>
       <div class="families">
         <div class="card">
@@ -1031,7 +1068,6 @@
       <span class="eyebrow">Thời Gian &amp; Địa Điểm</span>
       <h2 class="serif" style="font-size: 36px;" id="display-date">09:30 — Chủ nhật, Ngày 13 Tháng 12 Năm 2026</h2>
       <p style="color: var(--muted); margin-top: 6px;" id="venue-name">Nhà văn hóa thôn Bắc Bình, xã Nguyễn Bỉnh Khiêm, Thành phố Hải Phòng</p>
-      <p style="color: var(--rose-dark); font-size: 13px; font-weight: 500; margin-top: 4px;" id="map-address-text">MHF3+RG3, Nguyễn Bỉnh Khiêm, Hải Phòng, Việt Nam</p>
 
       <div class="lunar-date-banner">
         <div class="lunar-time-top">09:30</div>
@@ -1195,7 +1231,7 @@
     const WEDDING_CONFIG = {
       initials: "K & N",
       coupleNames: "Viết Khiêm & Hồng Nhung",
-      subtitle: "Trân trọng kính mời bạn tới dự ngày chung đôi của chúng mình",
+      subtitle: "Trân trọng báo tin lễ thành hôn của chúng tôi",
       eventISO: "2026-12-13T09:30:00+07:00",
       displayDate: "09:30 — Chủ nhật, Ngày 13 Tháng 12 Năm 2026",
       shortDate: "Chủ nhật, 13.12.2026 — Hải Phòng",
@@ -1236,7 +1272,6 @@
     document.getElementById("hero-subtitle").textContent = WEDDING_CONFIG.subtitle;
     document.getElementById("display-date").textContent = WEDDING_CONFIG.displayDate;
     document.getElementById("venue-name").textContent = WEDDING_CONFIG.venue;
-    document.getElementById("map-address-text").textContent = WEDDING_CONFIG.mapAddress;
     document.getElementById("map-external-link").href = WEDDING_CONFIG.mapUrl;
     document.getElementById("hero-img").src = WEDDING_CONFIG.heroPhoto;
 
@@ -1259,7 +1294,6 @@
       }
     });
 
-    // Nhân bản bộ thẻ để album lướt nối vòng mượt mà, không bị giật khi quay lại đầu
     if (galleryTrack && realCount > 0) {
       baseCards.forEach((card) => {
         const clone = card.cloneNode(true);
@@ -1409,16 +1443,88 @@
     document.getElementById("bank-owner").textContent = WEDDING_CONFIG.bank.owner;
 
     const bgAudio = document.getElementById("bg-audio");
+    const musicBtnEl = document.getElementById("music-btn");
+    const eqBarEls = [
+      document.getElementById("eq-b1"),
+      document.getElementById("eq-b2"),
+      document.getElementById("eq-b3"),
+      document.getElementById("eq-b4")
+    ];
+    const eqBaseHeights = [7, 15, 11, 4];
+
     let isMusicPlaying = false;
+    let audioCtx = null;
+    let analyserNode = null;
+    let freqDataArray = null;
+    let eqRafId = null;
+
+    function resetEqBars() {
+      eqBarEls.forEach((bar, i) => {
+        if (bar) bar.style.height = `${eqBaseHeights[i]}px`;
+      });
+    }
+
+    function setupAudioVisualizer() {
+      if (analyserNode) return;
+      try {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (!AudioContextClass) return;
+        audioCtx = audioCtx || new AudioContextClass();
+        const source = audioCtx.createMediaElementSource(bgAudio);
+        analyserNode = audioCtx.createAnalyser();
+        analyserNode.fftSize = 64;
+        analyserNode.smoothingTimeConstant = 0.78;
+        source.connect(analyserNode);
+        analyserNode.connect(audioCtx.destination);
+        freqDataArray = new Uint8Array(analyserNode.frequencyBinCount);
+        musicBtnEl.classList.remove("eq-fallback");
+      } catch (err) {
+        musicBtnEl.classList.add("eq-fallback");
+      }
+    }
+
+    function animateEqBars() {
+      if (eqRafId) cancelAnimationFrame(eqRafId);
+      const binIndices = [1, 3, 6, 10];
+
+      function step() {
+        if (!isMusicPlaying) {
+          resetEqBars();
+          eqRafId = null;
+          return;
+        }
+        if (analyserNode && freqDataArray && !musicBtnEl.classList.contains("eq-fallback")) {
+          analyserNode.getByteFrequencyData(freqDataArray);
+          eqBarEls.forEach((bar, idx) => {
+            if (!bar) return;
+            const amp = (freqDataArray[binIndices[idx]] || 0) / 255;
+            const nextH = Math.round(4 + amp * 15);
+            bar.style.height = `${nextH}px`;
+          });
+        }
+        eqRafId = requestAnimationFrame(step);
+      }
+
+      eqRafId = requestAnimationFrame(step);
+    }
 
     function updateMusicUI() {
-      const btn = document.getElementById("music-btn");
-      const txt = document.getElementById("music-text");
-      btn.classList.toggle("playing", isMusicPlaying);
-      txt.textContent = isMusicPlaying ? "Đang phát: Váy Cưới" : "Bật nhạc: Váy Cưới";
+      musicBtnEl.classList.toggle("playing", isMusicPlaying);
+      if (isMusicPlaying) {
+        animateEqBars();
+      } else {
+        if (eqRafId) {
+          cancelAnimationFrame(eqRafId);
+          eqRafId = null;
+        }
+        resetEqBars();
+      }
     }
 
     bgAudio.addEventListener("play", () => {
+      if (audioCtx && audioCtx.state === "suspended") {
+        audioCtx.resume().catch(() => {});
+      }
       isMusicPlaying = true;
       updateMusicUI();
     });
@@ -1430,6 +1536,7 @@
 
     async function startMusic() {
       if (!bgAudio.getAttribute("src")) return;
+      setupAudioVisualizer();
       try {
         bgAudio.volume = 0.85;
         await bgAudio.play();
@@ -1440,6 +1547,7 @@
 
     async function toggleMusic() {
       if (!bgAudio.getAttribute("src")) return;
+      setupAudioVisualizer();
       if (bgAudio.paused) {
         try {
           bgAudio.volume = 0.85;
