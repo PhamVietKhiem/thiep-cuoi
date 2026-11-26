@@ -11,34 +11,36 @@
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Thiệp mời — Viết Khiêm & Hồng Nhung" />
   <meta property="og:description" content="Trân trọng kính mời bạn tới dự ngày chung đôi — 09:30 Chủ nhật, 13.12.2026 tại Nhà văn hóa thôn Bắc Bình, Hải Phòng." />
-  <meta property="og:image" content="https://phamvietkhiem.github.io/thiep-cuoi/DSC02927.jpg" />
-  <meta property="og:image:secure_url" content="https://phamvietkhiem.github.io/thiep-cuoi/DSC02927.jpg" />
+  <meta property="og:image" content="https://phamvietkhiem.github.io/thiep-cuoi/og-cover.jpg" />
+  <meta property="og:image:secure_url" content="https://phamvietkhiem.github.io/thiep-cuoi/og-cover.jpg" />
   <meta property="og:image:alt" content="Ảnh cưới Viết Khiêm & Hồng Nhung" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Thiệp mời — Viết Khiêm & Hồng Nhung" />
   <meta name="twitter:description" content="Trân trọng kính mời bạn tới dự ngày chung đôi — 09:30 Chủ nhật, 13.12.2026 tại Nhà văn hóa thôn Bắc Bình, Hải Phòng." />
-  <meta name="twitter:image" content="https://phamvietkhiem.github.io/thiep-cuoi/DSC02927.jpg" />
+  <meta name="twitter:image" content="https://phamvietkhiem.github.io/thiep-cuoi/og-cover.jpg" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #faf7f2;
+      --bg: #fff6f8;
+      --bg-soft: #fdeef2;
       --surface: #ffffff;
-      --ink: #2b2623;
-      --muted: #756b63;
-      --gold: #b68d40;
-      --gold-dark: #8f6b29;
-      --line: #e6dfd5;
-      --radius: 18px;
+      --ink: #462c34;
+      --muted: #8a6d76;
+      --rose: #d66885;
+      --rose-dark: #b34966;
+      --rose-light: #f9d8e1;
+      --line: #f3dce3;
+      --radius: 20px;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      background: var(--bg);
+      background: linear-gradient(180deg, #fff6f8 0%, #fffafb 45%, #fdf0f4 100%);
       color: var(--ink);
       line-height: 1.65;
       overflow-x: hidden;
@@ -56,7 +58,7 @@
       left: 0;
       height: 3px;
       width: 0%;
-      background: linear-gradient(90deg, var(--gold-dark), var(--gold), #e5c37b);
+      background: linear-gradient(90deg, var(--rose-dark), var(--rose), #f6a6bc);
       z-index: 95;
       transition: width 0.08s linear;
     }
@@ -76,22 +78,22 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      background: rgba(43, 38, 35, 0.9);
-      color: #f7f1e8;
-      border: 1px solid rgba(182, 141, 64, 0.5);
+      background: rgba(70, 44, 52, 0.9);
+      color: #fff6f8;
+      border: 1px solid rgba(246, 166, 188, 0.55);
       padding: 8px 16px 8px 8px;
       border-radius: 999px;
       cursor: pointer;
       backdrop-filter: blur(8px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 10px 25px rgba(179, 73, 102, 0.24);
       transition: transform 0.2s ease, background 0.2s ease;
     }
-    .music-fab:hover { transform: translateY(-2px); background: #1c1816; }
+    .music-fab:hover { transform: translateY(-2px); background: #361f26; }
     .disc {
       width: 34px;
       height: 34px;
       border-radius: 50%;
-      background: radial-gradient(circle at center, #f7f1e8 0 4px, var(--gold) 5px 11px, #2b2623 12px 17px);
+      background: radial-gradient(circle at center, #fff6f8 0 4px, var(--rose) 5px 11px, #462c34 12px 17px);
       display: grid;
       place-items: center;
       animation: spin 6s linear infinite;
@@ -113,8 +115,8 @@
       position: fixed;
       inset: 0;
       z-index: 100;
-      background: radial-gradient(circle at 50% 35%, #38302b 0%, #181412 100%);
-      color: #f7f1e8;
+      background: radial-gradient(circle at 50% 30%, #6b3b4b 0%, #3a1e28 65%, #241118 100%);
+      color: #fff6f8;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -129,57 +131,86 @@
       transform: scale(1.04);
     }
     .monogram {
-      width: 92px;
-      height: 92px;
-      border: 1.5px solid var(--gold);
+      width: 96px;
+      height: 96px;
+      border: 1.5px solid #f6b6c8;
       border-radius: 50%;
       display: grid;
       place-items: center;
       font-family: 'Cormorant Garamond', serif;
       font-size: 30px;
       letter-spacing: 2px;
-      color: var(--gold);
+      color: #ffdce6;
       margin-bottom: 24px;
-      box-shadow: 0 0 0 8px rgba(182, 141, 64, 0.08);
+      background: rgba(255, 255, 255, 0.05);
+      box-shadow: 0 0 0 8px rgba(246, 182, 200, 0.1);
       animation: pulseRing 3s ease-in-out infinite;
     }
     @keyframes pulseRing {
-      0%, 100% { box-shadow: 0 0 0 6px rgba(182, 141, 64, 0.08); }
-      50% { box-shadow: 0 0 0 14px rgba(182, 141, 64, 0.16); }
+      0%, 100% { box-shadow: 0 0 0 6px rgba(246, 182, 200, 0.1); }
+      50% { box-shadow: 0 0 0 15px rgba(246, 182, 200, 0.2); }
     }
     .btn-open {
       margin-top: 28px;
       padding: 14px 38px;
-      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+      background: linear-gradient(135deg, #e07693 0%, var(--rose-dark) 100%);
       color: #fff;
-      border: none;
+      border: 1px solid rgba(255, 224, 233, 0.4);
       border-radius: 999px;
       font-size: 14px;
       font-weight: 600;
       letter-spacing: 1.5px;
       text-transform: uppercase;
       cursor: pointer;
-      box-shadow: 0 10px 28px rgba(182, 141, 64, 0.35);
+      box-shadow: 0 10px 28px rgba(214, 104, 133, 0.42);
       transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
     .btn-open:hover {
       transform: translateY(-2px);
-      box-shadow: 0 14px 32px rgba(182, 141, 64, 0.5);
+      box-shadow: 0 14px 32px rgba(214, 104, 133, 0.58);
     }
 
     .wrap {
       max-width: 780px;
       margin: 0 auto;
-      padding: 0 20px 128px;
+      padding: 0 20px 132px;
       position: relative;
       z-index: 10;
     }
 
     section {
-      padding: 64px 0;
-      border-bottom: 1px solid var(--line);
+      padding: 58px 0;
+      position: relative;
     }
-    section:last-of-type { border-bottom: none; }
+
+    .heart-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin: 8px auto 0;
+      max-width: 320px;
+      color: var(--rose);
+    }
+    .heart-divider::before,
+    .heart-divider::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--rose-light), var(--rose));
+    }
+    .heart-divider::after {
+      background: linear-gradient(90deg, var(--rose), var(--rose-light), transparent);
+    }
+    .heart-divider span {
+      font-size: 15px;
+      animation: softBeat 2.2s ease-in-out infinite;
+    }
+
+    @keyframes softBeat {
+      0%, 100% { transform: scale(1); opacity: 0.85; }
+      50% { transform: scale(1.22); opacity: 1; }
+    }
 
     .reveal {
       opacity: 0;
@@ -196,7 +227,7 @@
       font-size: 12px;
       letter-spacing: 3px;
       text-transform: uppercase;
-      color: var(--gold-dark);
+      color: var(--rose-dark);
       margin-bottom: 10px;
       display: block;
       font-weight: 600;
@@ -204,10 +235,10 @@
 
     .hero {
       text-align: center;
-      padding-top: 68px;
+      padding-top: 64px;
     }
     .hero h1 {
-      font-size: clamp(32px, 5.4vw, 50px);
+      font-size: clamp(32px, 5.4vw, 52px);
       line-height: 1.15;
       margin: 12px 0;
       color: var(--ink);
@@ -215,7 +246,7 @@
     }
     .hero .amp {
       font-style: italic;
-      color: var(--gold);
+      color: var(--rose);
       font-weight: 500;
       margin: 0 4px;
     }
@@ -224,10 +255,12 @@
       width: 100%;
       max-width: 500px;
       aspect-ratio: 4 / 5;
-      border-radius: 240px 240px 18px 18px;
+      border-radius: 250px 250px 22px 22px;
       overflow: hidden;
-      border: 6px solid var(--surface);
-      box-shadow: 0 20px 50px rgba(43, 38, 35, 0.14);
+      border: 7px solid var(--surface);
+      outline: 1.5px solid var(--rose-light);
+      box-shadow: 0 22px 54px rgba(179, 73, 102, 0.16);
+      position: relative;
     }
     .hero-photo img {
       width: 100%;
@@ -238,23 +271,68 @@
       transition: transform 0.35s ease-out;
       will-change: transform;
     }
+    .hero-heart-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 18px;
+      padding: 6px 18px;
+      border-radius: 999px;
+      background: var(--surface);
+      border: 1px solid var(--rose-light);
+      color: var(--rose-dark);
+      font-size: 13px;
+      font-weight: 600;
+      box-shadow: 0 8px 20px rgba(214, 104, 133, 0.12);
+    }
+    .hero-heart-badge i {
+      font-style: normal;
+      color: var(--rose);
+      animation: softBeat 1.9s ease-in-out infinite;
+    }
 
     .gallery-grid {
-      margin-top: 28px;
+      margin-top: 30px;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
+      gap: 24px;
+      position: relative;
     }
+    .gallery-center-heart {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 6;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #fff 0%, #fdeef2 100%);
+      border: 2px solid var(--rose-light);
+      color: var(--rose);
+      display: grid;
+      place-items: center;
+      font-size: 20px;
+      box-shadow: 0 10px 24px rgba(214, 104, 133, 0.22);
+      animation: centerHeartPulse 2.4s ease-in-out infinite;
+      pointer-events: none;
+    }
+    @keyframes centerHeartPulse {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); }
+      50% { transform: translate(-50%, -50%) scale(1.14); }
+    }
+
     .gallery-card {
       background: var(--surface);
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      padding: 10px 10px 16px;
-      box-shadow: 0 12px 28px rgba(43, 38, 35, 0.06);
+      padding: 11px 11px 18px;
+      box-shadow: 0 14px 32px rgba(179, 73, 102, 0.08);
       opacity: 0;
       transform: translateY(36px) rotate(var(--tilt, 0deg));
       transition: opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1), transform 0.85s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
       will-change: transform, opacity;
+      position: relative;
     }
     .gallery-card:nth-child(odd) { --tilt: -1.2deg; }
     .gallery-card:nth-child(even) { --tilt: 1.2deg; transition-delay: 0.12s; }
@@ -262,11 +340,31 @@
       opacity: 1;
       transform: translateY(0) rotate(0deg);
     }
+    .gallery-card:hover {
+      box-shadow: 0 18px 38px rgba(214, 104, 133, 0.16);
+    }
     .gallery-frame {
       width: 100%;
       aspect-ratio: 3 / 4;
-      border-radius: 12px;
+      border-radius: 14px;
       overflow: hidden;
+      position: relative;
+    }
+    .gallery-frame::after {
+      content: "♥";
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.88);
+      color: var(--rose);
+      display: grid;
+      place-items: center;
+      font-size: 14px;
+      box-shadow: 0 4px 12px rgba(179, 73, 102, 0.22);
+      animation: softBeat 2.5s ease-in-out infinite;
     }
     .gallery-frame img {
       width: 100%;
@@ -281,10 +379,10 @@
       transform: scale(1.04);
     }
     .gallery-caption {
-      margin-top: 12px;
+      margin-top: 13px;
       text-align: center;
       font-family: 'Cormorant Garamond', serif;
-      font-size: 19px;
+      font-size: 20px;
       color: var(--ink);
     }
     .gallery-caption small {
@@ -306,17 +404,17 @@
       border: 1px solid var(--line);
       border-radius: var(--radius);
       padding: 28px 20px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.03);
+      box-shadow: 0 10px 26px rgba(179, 73, 102, 0.06);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     .card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 14px 30px rgba(43, 38, 35, 0.07);
+      box-shadow: 0 16px 34px rgba(179, 73, 102, 0.12);
     }
     .card h3 {
-      font-size: 24px;
+      font-size: 25px;
       margin-bottom: 8px;
-      color: var(--gold-dark);
+      color: var(--rose-dark);
     }
     .card p { font-size: 14px; color: var(--muted); }
 
@@ -330,17 +428,17 @@
     .time-box {
       background: var(--surface);
       border: 1px solid var(--line);
-      border-radius: 12px;
+      border-radius: 14px;
       padding: 16px 8px;
       text-align: center;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.02);
+      box-shadow: 0 8px 20px rgba(179, 73, 102, 0.06);
     }
     .time-box span {
       display: block;
       font-family: 'Cormorant Garamond', serif;
       font-size: 36px;
       font-weight: 700;
-      color: var(--gold-dark);
+      color: var(--rose-dark);
       line-height: 1;
     }
     .time-box small {
@@ -364,61 +462,69 @@
       padding: 20px;
       border-radius: var(--radius);
       border: 1px solid var(--line);
+      box-shadow: 0 8px 22px rgba(179, 73, 102, 0.05);
     }
     .event-time {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 22px;
+      font-size: 23px;
       font-weight: 700;
-      color: var(--gold-dark);
+      color: var(--rose-dark);
     }
 
     .form-group {
       display: grid;
       gap: 14px;
       margin-top: 24px;
+      background: var(--surface);
+      padding: 24px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      box-shadow: 0 12px 28px rgba(179, 73, 102, 0.06);
     }
     input, select, textarea {
       width: 100%;
       padding: 13px 16px;
       border: 1px solid var(--line);
-      border-radius: 10px;
+      border-radius: 12px;
       font-family: inherit;
       font-size: 14px;
-      background: var(--surface);
+      background: #fffcfd;
       color: var(--ink);
       transition: border-color 0.2s ease, box-shadow 0.2s ease;
     }
     input:focus, select:focus, textarea:focus {
       outline: none;
-      border-color: var(--gold);
-      box-shadow: 0 0 0 3px rgba(182, 141, 64, 0.14);
+      border-color: var(--rose);
+      box-shadow: 0 0 0 3px rgba(214, 104, 133, 0.16);
     }
     .btn {
       display: inline-block;
       padding: 13px 26px;
-      background: var(--ink);
+      background: linear-gradient(135deg, var(--rose) 0%, var(--rose-dark) 100%);
       color: #fff;
       border: none;
-      border-radius: 10px;
+      border-radius: 12px;
       font-size: 14px;
       font-weight: 600;
       cursor: pointer;
       text-decoration: none;
       text-align: center;
-      transition: background 0.2s ease, transform 0.2s ease;
+      box-shadow: 0 8px 20px rgba(179, 73, 102, 0.22);
+      transition: filter 0.2s ease, transform 0.2s ease;
     }
-    .btn:hover { background: var(--gold-dark); transform: translateY(-1px); }
+    .btn:hover { filter: brightness(1.06); transform: translateY(-1px); }
     .btn-outline {
-      background: transparent;
-      color: var(--ink);
-      border: 1px solid var(--ink);
+      background: var(--surface);
+      color: var(--rose-dark);
+      border: 1.5px solid var(--rose);
+      box-shadow: none;
     }
-    .btn-outline:hover { background: var(--ink); color: #fff; }
+    .btn-outline:hover { background: var(--rose-dark); color: #fff; }
 
     .modal {
       position: fixed;
       inset: 0;
-      background: rgba(28, 24, 22, 0.72);
+      background: rgba(48, 24, 32, 0.72);
       display: none;
       place-items: center;
       padding: 20px;
@@ -433,6 +539,7 @@
       padding: 28px;
       text-align: center;
       position: relative;
+      border: 1px solid var(--rose-light);
     }
     .qr-frame {
       width: 220px;
@@ -457,9 +564,9 @@
       transform: translateX(-50%);
       z-index: 82;
       width: min(92vw, 520px);
-      background: rgba(43, 38, 35, 0.94);
-      color: #f7f1e8;
-      border: 1px solid rgba(182, 141, 64, 0.35);
+      background: rgba(70, 44, 52, 0.94);
+      color: #fff6f8;
+      border: 1px solid rgba(246, 166, 188, 0.45);
       border-radius: 999px;
       padding: 8px 10px 8px 20px;
       display: flex;
@@ -467,10 +574,10 @@
       justify-content: space-between;
       gap: 12px;
       backdrop-filter: blur(10px);
-      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.24);
+      box-shadow: 0 14px 32px rgba(70, 44, 52, 0.28);
     }
     .dock-rsvp-link {
-      color: #f7f1e8;
+      color: #fff6f8;
       text-decoration: none;
       font-size: 13px;
       font-weight: 600;
@@ -478,14 +585,14 @@
       white-space: nowrap;
       transition: color 0.2s ease;
     }
-    .dock-rsvp-link:hover { color: #e5c37b; }
+    .dock-rsvp-link:hover { color: #f9b6c8; }
     .heart-btn {
       display: inline-flex;
       align-items: center;
       gap: 7px;
-      background: rgba(255, 255, 255, 0.1);
-      color: #f7f1e8;
-      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff6f8;
+      border: 1px solid rgba(255, 214, 226, 0.24);
       border-radius: 999px;
       padding: 8px 16px;
       font-size: 13px;
@@ -495,28 +602,28 @@
       transition: transform 0.16s ease, background 0.2s ease, border-color 0.2s ease;
     }
     .heart-btn:hover {
-      background: rgba(255, 255, 255, 0.16);
-      border-color: rgba(229, 195, 123, 0.55);
+      background: rgba(255, 255, 255, 0.2);
+      border-color: rgba(249, 182, 200, 0.65);
     }
     .heart-btn:active { transform: scale(0.94); }
     .heart-btn .heart-icon {
-      color: #ff6b81;
+      color: #ff7597;
       font-size: 14px;
       line-height: 1;
       transition: transform 0.25s ease;
     }
-    .heart-btn.pulsing .heart-icon { transform: scale(1.35); }
-    .heart-count { color: #ff7b8e; font-weight: 700; }
+    .heart-btn.pulsing .heart-icon { transform: scale(1.38); }
+    .heart-count { color: #ff99b2; font-weight: 700; }
 
     .floating-heart {
       position: fixed;
       pointer-events: none;
       z-index: 92;
-      color: #ff5e78;
+      color: #ff5e84;
       font-size: 20px;
       transform: translate(-50%, -50%);
       animation: floatHeartUp 1.05s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-      text-shadow: 0 4px 12px rgba(255, 94, 120, 0.35);
+      text-shadow: 0 4px 12px rgba(255, 94, 132, 0.35);
       will-change: transform, opacity;
     }
     @keyframes floatHeartUp {
@@ -537,6 +644,7 @@
     @media (max-width: 600px) {
       .hero h1 { font-size: clamp(24px, 6.2vw, 32px); }
       .gallery-grid { grid-template-columns: 1fr; gap: 22px; }
+      .gallery-center-heart { display: none; }
       .families { grid-template-columns: 1fr; }
       .event-item { grid-template-columns: 1fr; gap: 4px; }
       .bottom-dock {
@@ -552,18 +660,18 @@
 
   <div class="scroll-bar" id="scroll-bar"></div>
   <canvas id="petal-canvas"></canvas>
-  <audio id="bg-audio" src="./moi-duyen-vang.mp3" loop preload="auto"></audio>
+  <audio id="bg-audio" src="./vay-cuoi.mp3" loop preload="auto"></audio>
 
   <button type="button" class="music-fab" id="music-btn" onclick="toggleMusic()" aria-label="Bật tắt nhạc nền">
     <span class="disc"></span>
-    <span class="music-label" id="music-text">Bật nhạc: Mối Duyên Vàng</span>
+    <span class="music-label" id="music-text">Bật nhạc: Váy Cưới</span>
   </button>
 
   <div id="cover">
     <div class="monogram" id="cover-initials">K &amp; N</div>
-    <span class="eyebrow" id="cover-eyebrow" style="color: #d6c3a5;">Trân trọng kính mời</span>
-    <h2 class="serif" style="font-size: 36px; margin: 6px 0;" id="cover-names">Viết Khiêm &amp; Hồng Nhung</h2>
-    <p style="color: #c7bdb2; font-size: 14px;" id="cover-date">Chủ nhật, 13.12.2026 — Hải Phòng</p>
+    <span class="eyebrow" id="cover-eyebrow" style="color: #f6c4d2;">Trân trọng kính mời</span>
+    <h2 class="serif" style="font-size: 38px; margin: 6px 0;" id="cover-names">Viết Khiêm &amp; Hồng Nhung</h2>
+    <p style="color: #e8cbd3; font-size: 14px;" id="cover-date">Chủ nhật, 13.12.2026 — Hải Phòng</p>
     <button class="btn-open" onclick="openInvite()">Mở Thiệp Mời</button>
   </div>
 
@@ -575,16 +683,20 @@
       <div class="hero-photo">
         <img id="hero-img" src="./DSC02927.jpg" alt="Ảnh cưới Viết Khiêm & Hồng Nhung" />
       </div>
+      <div class="hero-heart-badge"><i>♥</i> Save The Date · 13.12.2026 <i>♥</i></div>
+      <div class="heart-divider" aria-hidden="true"><span>♥</span></div>
     </section>
 
     <section class="reveal">
       <div style="text-align: center;">
         <span class="eyebrow">Khoảnh Khắc Yêu Thương</span>
-        <h2 class="serif" style="font-size: 36px;">Album Kỷ Niệm Của Chúng Mình</h2>
+        <h2 class="serif" style="font-size: 38px;">Album Kỷ Niệm Của Chúng Mình</h2>
         <p style="color: var(--muted); font-size: 14px; margin-top: 4px;">Lướt nhẹ để ngắm từng khoảnh khắc đáng nhớ trước ngày trọng đại</p>
       </div>
 
       <div class="gallery-grid" id="gallery-grid">
+        <div class="gallery-center-heart" aria-hidden="true">♥</div>
+
         <figure class="gallery-card">
           <div class="gallery-frame">
             <img src="./DSC02621.jpg" alt="Khoảnh khắc 1 — Viết Khiêm & Hồng Nhung" />
@@ -625,12 +737,13 @@
           </figcaption>
         </figure>
       </div>
+      <div class="heart-divider" style="margin-top: 42px;" aria-hidden="true"><span>♥</span></div>
     </section>
 
     <section class="reveal">
       <div style="text-align: center; margin-bottom: 28px;">
         <span class="eyebrow">Gia Đình Hai Bên</span>
-        <h2 class="serif" style="font-size: 36px;">Trân Trọng Kính Mời</h2>
+        <h2 class="serif" style="font-size: 38px;">Trân Trọng Kính Mời</h2>
       </div>
       <div class="families">
         <div class="card">
@@ -646,11 +759,12 @@
           <p style="margin-top: 12px; color: var(--ink);">Út nữ: <strong id="bride-name">Phạm Hồng Nhung</strong></p>
         </div>
       </div>
+      <div class="heart-divider" style="margin-top: 42px;" aria-hidden="true"><span>♥</span></div>
     </section>
 
     <section class="reveal" style="text-align: center;">
       <span class="eyebrow">Thời Gian &amp; Địa Điểm</span>
-      <h2 class="serif" style="font-size: 36px;" id="display-date">09:30 — Chủ nhật, Ngày 13 Tháng 12 Năm 2026</h2>
+      <h2 class="serif" style="font-size: 38px;" id="display-date">09:30 — Chủ nhật, Ngày 13 Tháng 12 Năm 2026</h2>
       <p style="color: var(--muted); margin-top: 6px;" id="venue-name">Nhà văn hóa thôn Bắc Bình, xã Nguyễn Bỉnh Khiêm, Thành phố Hải Phòng</p>
 
       <div class="countdown-grid">
@@ -674,12 +788,13 @@
         <a id="map-link" href="https://maps.google.com/?q=Nha+van+hoa+thon+Bac+Binh+Hai+Phong" target="_blank" rel="noopener" class="btn">Xem Bản Đồ Chỉ Đường</a>
         <button type="button" class="btn btn-outline" onclick="toggleGiftModal(true)">Gửi Mừng Cưới</button>
       </div>
+      <div class="heart-divider" style="margin-top: 42px;" aria-hidden="true"><span>♥</span></div>
     </section>
 
     <section class="reveal" id="rsvp-section">
       <div style="text-align: center;">
         <span class="eyebrow">Phúc Đáp &amp; Chúc Phúc</span>
-        <h2 class="serif" style="font-size: 36px;">Xác Nhận Tham Dự &amp; Lời Chúc</h2>
+        <h2 class="serif" style="font-size: 38px;">Xác Nhận Tham Dự &amp; Lời Chúc</h2>
         <p style="color: var(--muted); font-size: 14px;">Sự hiện diện của bạn là niềm vinh hạnh lớn nhất của gia đình chúng tôi.</p>
       </div>
 
@@ -693,13 +808,13 @@
         <textarea id="guest-wish" rows="3" placeholder="Gửi lời chúc tới cô dâu &amp; chú rể..."></textarea>
         <button type="submit" class="btn">Gửi Xác Nhận</button>
       </form>
-      <p id="rsvp-status" style="margin-top: 14px; text-align: center; font-size: 14px; color: var(--gold-dark); font-weight: 600;"></p>
+      <p id="rsvp-status" style="margin-top: 14px; text-align: center; font-size: 14px; color: var(--rose-dark); font-weight: 600;"></p>
     </section>
   </main>
 
   <div class="modal" id="gift-modal" onclick="if(event.target===this) toggleGiftModal(false)">
     <div class="modal-box">
-      <h3 class="serif" style="font-size: 28px;">Hộp Mừng Cưới</h3>
+      <h3 class="serif" style="font-size: 28px; color: var(--rose-dark);">Hộp Mừng Cưới</h3>
       <p style="font-size: 13px; color: var(--muted);">Quét mã QR TPBank hoặc sao chép số tài khoản bên dưới</p>
       <div class="qr-frame" id="qr-box">
         <img id="qr-img" src="./34eb2b17-35ea-4b3a-bdc4-a7fada0ab2fe.jpg" alt="Mã QR TPBank — PHAM VIET KHIEM — 10004772063" />
@@ -800,7 +915,7 @@
       const btn = document.getElementById("music-btn");
       const txt = document.getElementById("music-text");
       btn.classList.toggle("playing", isMusicPlaying);
-      txt.textContent = isMusicPlaying ? "Đang phát: Mối Duyên Vàng" : "Bật nhạc: Mối Duyên Vàng";
+      txt.textContent = isMusicPlaying ? "Đang phát: Váy Cưới" : "Bật nhạc: Váy Cưới";
     }
 
     bgAudio.addEventListener("play", () => {
@@ -868,15 +983,16 @@
         h = canvas.height = window.innerHeight;
       });
 
-      const petals = Array.from({ length: 24 }, () => ({
+      const petals = Array.from({ length: 26 }, (_, idx) => ({
         x: Math.random() * w,
         y: Math.random() * h,
-        r: 4 + Math.random() * 5,
-        vy: 0.6 + Math.random() * 1.1,
-        vx: -0.4 + Math.random() * 0.8,
+        r: 4.5 + Math.random() * 5,
+        vy: 0.55 + Math.random() * 1.0,
+        vx: -0.35 + Math.random() * 0.7,
         angle: Math.random() * Math.PI * 2,
         spin: -0.02 + Math.random() * 0.04,
-        alpha: 0.25 + Math.random() * 0.35,
+        alpha: 0.28 + Math.random() * 0.35,
+        isHeart: idx % 3 === 0,
         burst: false,
         life: 1
       }));
@@ -884,24 +1000,37 @@
       spawnSwipeEffect = function (x, y, count = 4) {
         for (let i = 0; i < count; i++) {
           const spreadAngle = Math.random() * Math.PI * 2;
-          const speed = 1.2 + Math.random() * 2.6;
+          const speed = 1.2 + Math.random() * 2.5;
           petals.push({
             x,
             y,
-            r: 4.5 + Math.random() * 4.5,
+            r: 5 + Math.random() * 4.5,
             vy: Math.sin(spreadAngle) * speed - 0.6,
             vx: Math.cos(spreadAngle) * speed,
             angle: Math.random() * Math.PI * 2,
             spin: -0.08 + Math.random() * 0.16,
-            alpha: 0.75,
+            alpha: 0.78,
+            isHeart: i % 2 === 0,
             burst: true,
             life: 1
           });
         }
-        if (petals.length > 75) {
-          petals.splice(24, petals.length - 75);
+        if (petals.length > 78) {
+          petals.splice(26, petals.length - 78);
         }
       };
+
+      function drawHeartShape(c, size) {
+        c.beginPath();
+        const topCurveHeight = size * 0.3;
+        c.moveTo(0, topCurveHeight);
+        c.bezierCurveTo(0, 0, -size / 2, 0, -size / 2, topCurveHeight);
+        c.bezierCurveTo(-size / 2, (size + topCurveHeight) / 2, 0, (size + topCurveHeight) / 1.5, 0, size);
+        c.bezierCurveTo(0, (size + topCurveHeight) / 1.5, size / 2, (size + topCurveHeight) / 2, size / 2, topCurveHeight);
+        c.bezierCurveTo(size / 2, 0, 0, 0, 0, topCurveHeight);
+        c.closePath();
+        c.fill();
+      }
 
       function draw() {
         ctx.clearRect(0, 0, w, h);
@@ -919,19 +1048,25 @@
               continue;
             }
           } else {
-            if (p.y > h + 12) { p.y = -12; p.x = Math.random() * w; }
-            if (p.x > w + 12) p.x = -12;
-            if (p.x < -12) p.x = w + 12;
+            if (p.y > h + 14) { p.y = -14; p.x = Math.random() * w; }
+            if (p.x > w + 14) p.x = -14;
+            if (p.x < -14) p.x = w + 14;
           }
 
           const currentAlpha = p.burst ? p.alpha * p.life : p.alpha;
           ctx.save();
           ctx.translate(p.x, p.y);
           ctx.rotate(p.angle);
-          ctx.fillStyle = `rgba(198, 152, 74, ${Math.max(0, currentAlpha)})`;
-          ctx.beginPath();
-          ctx.ellipse(0, 0, p.r, p.r * 0.55, 0, 0, Math.PI * 2);
-          ctx.fill();
+          ctx.fillStyle = p.isHeart
+            ? `rgba(226, 108, 142, ${Math.max(0, currentAlpha)})`
+            : `rgba(244, 169, 191, ${Math.max(0, currentAlpha)})`;
+          if (p.isHeart) {
+            drawHeartShape(ctx, p.r * 1.45);
+          } else {
+            ctx.beginPath();
+            ctx.ellipse(0, 0, p.r, p.r * 0.55, 0, 0, Math.PI * 2);
+            ctx.fill();
+          }
           ctx.restore();
         }
         requestAnimationFrame(draw);
