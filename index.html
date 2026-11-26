@@ -284,7 +284,7 @@
     }
 
     section {
-      padding: 52px 0;
+      padding: 58px 0;
       position: relative;
     }
 
@@ -337,10 +337,16 @@
       display: block;
       font-weight: 600;
     }
+    .sub-caption-below {
+      font-size: 13.5px;
+      color: var(--muted);
+      margin-top: 6px;
+      display: block;
+    }
 
     .hero {
       text-align: center;
-      padding-top: 60px;
+      padding-top: 64px;
     }
     .hero h1 {
       font-size: clamp(30px, 5vw, 48px);
@@ -356,7 +362,7 @@
       margin: 0 4px;
     }
     .hero-photo {
-      margin: 28px auto 0;
+      margin: 30px auto 0;
       width: 100%;
       max-width: 500px;
       aspect-ratio: 4 / 5;
@@ -399,25 +405,16 @@
     .families {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 22px;
+      gap: 24px;
       text-align: center;
     }
     .card {
       background: var(--surface);
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      padding: 26px 20px;
+      padding: 28px 20px;
       box-shadow: 0 10px 26px rgba(179, 73, 102, 0.06);
       transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
-      position: relative;
-    }
-    .card::before {
-      content: "";
-      position: absolute;
-      inset: 7px;
-      border: 1px dashed rgba(214, 104, 133, 0.24);
-      border-radius: 15px;
-      pointer-events: none;
     }
     .card:hover {
       transform: translateY(-4px);
@@ -428,11 +425,11 @@
       margin-bottom: 10px;
       color: var(--rose-dark);
     }
-    .card p { font-size: 14px; color: var(--muted); position: relative; }
+    .card p { font-size: 14px; color: var(--muted); }
 
     .carousel-shell {
       position: relative;
-      margin-top: 22px;
+      margin-top: 26px;
     }
     .gallery-grid {
       display: flex;
@@ -691,25 +688,6 @@
       line-height: 1;
       transform: translateY(-1px);
     }
-    .add-cal-row {
-      margin-top: 14px;
-      padding-top: 10px;
-      border-top: 1px dashed var(--rose-light);
-    }
-    .add-cal-link {
-      display: inline-block;
-      background: none;
-      border: none;
-      font-family: inherit;
-      font-size: 12.5px;
-      font-weight: 600;
-      color: var(--rose-dark);
-      text-decoration: underline;
-      text-underline-offset: 4px;
-      cursor: pointer;
-      transition: color 0.2s ease;
-    }
-    .add-cal-link:hover { color: var(--rose); }
 
     .countdown-grid {
       display: grid;
@@ -764,27 +742,6 @@
       font-size: 22px;
       font-weight: 700;
       color: var(--rose-dark);
-    }
-
-    .wish-chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-    .wish-chip {
-      background: var(--bg-soft);
-      color: var(--rose-dark);
-      border: 1px solid var(--rose-light);
-      border-radius: 999px;
-      padding: 6px 12px;
-      font-size: 12px;
-      font-weight: 500;
-      cursor: pointer;
-      transition: background 0.2s ease, transform 0.15s ease;
-    }
-    .wish-chip:hover {
-      background: var(--rose-light);
-      transform: translateY(-1px);
     }
 
     .form-group {
@@ -1019,12 +976,17 @@
       <span class="eyebrow">Ngày Chung Đôi</span>
       <h1 id="hero-names">Viết Khiêm <span class="amp">&amp;</span> Hồng Nhung</h1>
       <p style="color: var(--muted);" id="hero-subtitle">Trân trọng báo tin lễ thành hôn của chúng tôi</p>
+      <div class="hero-photo">
+        <img id="hero-img" src="./DSC02927.jpg" alt="Ảnh cưới Viết Khiêm & Hồng Nhung" fetchpriority="high" decoding="async" />
+      </div>
+      <div class="hero-heart-badge"><i>♥</i> Save The Date · 13.12.2026 <i>♥</i></div>
+      <div class="heart-divider" aria-hidden="true"><span>♥</span></div>
     </section>
 
-    <section class="reveal" style="padding-top: 12px;">
-      <div style="text-align: center; margin-bottom: 24px;">
-        <span class="eyebrow">Hân Hạnh Báo Tin</span>
+    <section class="reveal">
+      <div style="text-align: center; margin-bottom: 28px;">
         <h2 class="serif" style="font-size: 36px;">Gia Đình Hai Bên</h2>
+        <span class="eyebrow sub-caption-below">Hân Hạnh Báo Tin</span>
       </div>
       <div class="families">
         <div class="card">
@@ -1040,14 +1002,7 @@
           <p style="margin-top: 12px; color: var(--ink);">Út nữ: <strong id="bride-name">Phạm Hồng Nhung</strong></p>
         </div>
       </div>
-
-      <div class="hero-photo">
-        <img id="hero-img" src="./DSC02927.jpg" alt="Ảnh cưới Viết Khiêm & Hồng Nhung" fetchpriority="high" decoding="async" />
-      </div>
-      <div style="text-align: center;">
-        <div class="hero-heart-badge"><i>♥</i> Save The Date · 13.12.2026 <i>♥</i></div>
-      </div>
-      <div class="heart-divider" style="margin-top: 34px;" aria-hidden="true"><span>♥</span></div>
+      <div class="heart-divider" style="margin-top: 42px;" aria-hidden="true"><span>♥</span></div>
     </section>
 
     <section class="reveal" id="album-section">
@@ -1186,10 +1141,6 @@
             <span class="cal-day muted-day"></span>
           </div>
         </div>
-
-        <div class="add-cal-row">
-          <button type="button" class="add-cal-link" onclick="downloadWeddingCalendar()">Thêm vào lịch</button>
-        </div>
       </div>
 
       <div class="countdown-grid">
@@ -1230,11 +1181,6 @@
           <option value="Đi cùng người thân (2 người)">Tham dự cùng người thân (2 người)</option>
           <option value="Rất tiếc không thể đến">Rất tiếc, mình bận không thể tham dự</option>
         </select>
-        <div class="wish-chips" aria-label="Chọn nhanh lời chúc">
-          <button type="button" class="wish-chip" onclick="fillWish('Chúc Khiêm & Hồng Nhung trăm năm hạnh phúc, sớm đón tin vui!')">Trăm năm hạnh phúc ♥</button>
-          <button type="button" class="wish-chip" onclick="fillWish('Chúc hai bạn luôn yêu thương, đồng hành và ngập tràn tiếng cười!')">Yêu thương viên mãn</button>
-          <button type="button" class="wish-chip" onclick="fillWish('Chúc mừng ngày chung đôi của hai bạn, chúc gia đình mãi ấm êm!')">Mừng ngày chung đôi</button>
-        </div>
         <textarea id="guest-wish" rows="3" placeholder="Gửi lời chúc tới cô dâu &amp; chú rể..."></textarea>
         <button type="submit" class="btn">Gửi Xác Nhận</button>
       </form>
@@ -1271,9 +1217,7 @@
         <img id="qr-img" src="./34eb2b17-35ea-4b3a-bdc4-a7fada0ab2fe.jpg" alt="Mã QR TPBank — PHAM VIET KHIEM — 10004772063" loading="lazy" decoding="async" />
       </div>
       <p style="font-size: 14px;"><strong id="bank-info">TPBank — 1000 4772 063</strong></p>
-      <p style="font-size: 13px; color: var(--muted); margin-bottom: 12px;" id="bank-owner">PHAM VIET KHIEM</p>
-      <button type="button" class="btn btn-outline" style="width: 100%; margin-bottom: 10px;" onclick="copyBankAccount()">Sao Chép Số Tài Khoản</button>
-      <p id="copy-status" style="font-size: 12.5px; color: var(--rose-dark); font-weight: 600; min-height: 18px; margin-bottom: 8px;"></p>
+      <p style="font-size: 13px; color: var(--muted); margin-bottom: 16px;" id="bank-owner">PHAM VIET KHIEM</p>
       <button type="button" class="btn" style="width: 100%;" onclick="toggleGiftModal(false)">Đóng</button>
     </div>
   </div>
@@ -1320,7 +1264,6 @@
       bank: {
         qrPhoto: "./34eb2b17-35ea-4b3a-bdc4-a7fada0ab2fe.jpg",
         info: "TPBank — 1000 4772 063",
-        accountNumber: "10004772063",
         owner: "PHAM VIET KHIEM"
       }
     };
@@ -1641,60 +1584,6 @@
 
     function toggleGiftModal(show) {
       document.getElementById("gift-modal").classList.toggle("active", show);
-      if (!show) {
-        const st = document.getElementById("copy-status");
-        if (st) st.textContent = "";
-      }
-    }
-
-    function copyBankAccount() {
-      const acc = WEDDING_CONFIG.bank.accountNumber;
-      const st = document.getElementById("copy-status");
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(acc).then(() => {
-          if (st) st.textContent = `Đã sao chép STK ${acc}`;
-        }).catch(() => {
-          if (st) st.textContent = `STK: ${acc}`;
-        });
-      } else if (st) {
-        st.textContent = `STK: ${acc}`;
-      }
-    }
-
-    function downloadWeddingCalendar() {
-      const icsContent = [
-        "BEGIN:VCALENDAR",
-        "VERSION:200",
-        "PRODID:-//Viet Khiem & Hong Nhung//Wedding Invite//VI",
-        "BEGIN:VEVENT",
-        "UID:wedding-khiem-nhung-20261213@phamvietkhiem.github.io",
-        "DTSTAMP:20261126T090000Z",
-        "DTSTART;TZID=Asia/Bangkok:20261213T093000",
-        "DTEND;TZID=Asia/Bangkok:20261213T113000",
-        "SUMMARY:Lễ Thành Hôn Viết Khiêm & Hồng Nhung",
-        "DESCRIPTION:Trân trọng báo tin lễ thành hôn (05/11 năm Bính Ngọ) — 09:30 Chủ nhật, 13.12.2026 tại Nhà văn hóa thôn Bắc Bình, xã Nguyễn Bỉnh Khiêm, Thành phố Hải Phòng.",
-        "LOCATION:Nhà văn hóa thôn Bắc Bình, xã Nguyễn Bỉnh Khiêm, Thành phố Hải Phòng",
-        "END:VEVENT",
-        "END:VCALENDAR"
-      ].join("\r\n");
-
-      const blob = new Blob([icsContent], { type: "text/calendar;charset=utf-8" });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = "le-thanh-hon-viet-khiem-hong-nhung.ics";
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      setTimeout(() => URL.revokeObjectURL(url), 1000);
-    }
-
-    function fillWish(text) {
-      const wishInput = document.getElementById("guest-wish");
-      if (wishInput) {
-        wishInput.value = text;
-        wishInput.focus();
-      }
     }
 
     function toggleMapModal(show) {
