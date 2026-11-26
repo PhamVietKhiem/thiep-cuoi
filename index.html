@@ -387,6 +387,7 @@
     }
     .card p { font-size: 14px; color: var(--muted); }
 
+    /* Album lướt liên tục mượt mà, không giật */
     .carousel-shell {
       position: relative;
       margin-top: 26px;
@@ -395,11 +396,14 @@
       display: flex;
       gap: 18px;
       overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      scroll-behavior: smooth;
+      scroll-behavior: auto;
       -webkit-overflow-scrolling: touch;
       padding: 10px 28px 20px;
       scrollbar-width: none;
+      will-change: scroll-position;
+    }
+    .gallery-grid.user-dragging {
+      scroll-snap-type: x proximity;
     }
     .gallery-grid::-webkit-scrollbar {
       display: none;
@@ -413,11 +417,11 @@
       border-radius: var(--radius);
       padding: 11px 11px 18px;
       box-shadow: 0 14px 30px rgba(179, 73, 102, 0.09);
-      transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
+      transition: box-shadow 0.3s ease;
       position: relative;
+      transform: translateZ(0);
     }
     .gallery-card:hover {
-      transform: translateY(-4px);
       box-shadow: 0 18px 38px rgba(214, 104, 133, 0.16);
     }
     .gallery-frame {
@@ -449,12 +453,8 @@
       object-fit: cover;
       object-position: center 18%;
       display: block;
-      transition: transform 0.45s ease-out;
       user-select: none;
       -webkit-user-drag: none;
-    }
-    .gallery-card:hover .gallery-frame img {
-      transform: scale(1.04);
     }
     .gallery-caption {
       margin-top: 13px;
@@ -967,7 +967,7 @@
       <div style="text-align: center;">
         <span class="eyebrow">Khoảnh Khắc Yêu Thương</span>
         <h2 class="serif" style="font-size: 36px;">Album Kỷ Niệm Của Chúng Mình</h2>
-        <p style="color: var(--muted); font-size: 14px; margin-top: 4px;">Album đang tự động chạy — bạn cũng có thể vuốt trái/phải để xem</p>
+        <p style="color: var(--muted); font-size: 14px; margin-top: 4px;">Album đang lướt nhẹ nhàng — chạm hoặc vuốt để xem từng ảnh</p>
       </div>
 
       <div class="carousel-shell">
@@ -977,7 +977,7 @@
         <div class="gallery-grid" id="gallery-grid">
           <figure class="gallery-card">
             <div class="gallery-frame">
-              <img src="./DSC02621.jpg" alt="Khoảnh khắc 1 — Viết Khiêm & Hồng Nhung" loading="lazy" decoding="async" />
+              <img src="./DSC02621.jpg" alt="Khoảnh khắc 1 — Viết Khiêm & Hồng Nhung" loading="eager" decoding="async" />
             </div>
             <figcaption class="gallery-caption">
               Nhịp Đập Đồng Điệu
@@ -987,7 +987,7 @@
 
           <figure class="gallery-card">
             <div class="gallery-frame">
-              <img src="./DSC02743.jpg" alt="Khoảnh khắc 2 — Viết Khiêm & Hồng Nhung" loading="lazy" decoding="async" />
+              <img src="./DSC02743.jpg" alt="Khoảnh khắc 2 — Viết Khiêm & Hồng Nhung" loading="eager" decoding="async" />
             </div>
             <figcaption class="gallery-caption">
               Tựa Vai Bình Yên
@@ -997,7 +997,7 @@
 
           <figure class="gallery-card">
             <div class="gallery-frame">
-              <img src="./DSC03049.jpg" alt="Khoảnh khắc 3 — Viết Khiêm & Hồng Nhung" loading="lazy" decoding="async" />
+              <img src="./DSC03049.jpg" alt="Khoảnh khắc 3 — Viết Khiêm & Hồng Nhung" loading="eager" decoding="async" />
             </div>
             <figcaption class="gallery-caption">
               Nắm Tay Dưới Nắng Mai
@@ -1007,7 +1007,7 @@
 
           <figure class="gallery-card">
             <div class="gallery-frame">
-              <img src="./DSC03326.jpg" alt="Khoảnh khắc 4 — Viết Khiêm & Hồng Nhung" loading="lazy" decoding="async" />
+              <img src="./DSC03326.jpg" alt="Khoảnh khắc 4 — Viết Khiêm & Hồng Nhung" loading="eager" decoding="async" />
             </div>
             <figcaption class="gallery-caption">
               Lời Hẹn Trăm Năm
@@ -1241,11 +1241,12 @@
     document.getElementById("hero-img").src = WEDDING_CONFIG.heroPhoto;
 
     const galleryTrack = document.getElementById("gallery-grid");
-    const galleryCards = document.querySelectorAll("#gallery-grid .gallery-card");
+    const baseCards = Array.from(document.querySelectorAll("#gallery-grid .gallery-card"));
     const carouselDots = document.querySelectorAll("#carousel-dots .carousel-dot");
+    const realCount = baseCards.length;
 
     WEDDING_CONFIG.gallery.forEach((item, idx) => {
-      const card = galleryCards[idx];
+      const card = baseCards[idx];
       if (!card) return;
       const img = card.querySelector("img");
       const cap = card.querySelector(".gallery-caption");
@@ -1258,79 +1259,142 @@
       }
     });
 
-    function getActiveSlideIndex() {
-      if (!galleryTrack || !galleryCards.length) return 0;
-      const trackCenter = galleryTrack.scrollLeft + galleryTrack.clientWidth / 2;
+    // Nhân bản bộ thẻ để album lướt nối vòng mượt mà, không bị giật khi quay lại đầu
+    if (galleryTrack && realCount > 0) {
+      baseCards.forEach((card) => {
+        const clone = card.cloneNode(true);
+        clone.setAttribute("aria-hidden", "true");
+        galleryTrack.appendChild(clone);
+      });
+    }
+
+    const allCards = Array.from(document.querySelectorAll("#gallery-grid .gallery-card"));
+
+    function getLoopSpanWidth() {
+      if (!galleryTrack || allCards.length < realCount + 1) return galleryTrack ? galleryTrack.scrollWidth / 2 : 0;
+      const firstClone = allCards[realCount];
+      return firstClone ? firstClone.offsetLeft - baseCards[0].offsetLeft : galleryTrack.scrollWidth / 2;
+    }
+
+    function updateCarouselDots() {
+      if (!galleryTrack || !realCount) return;
+      const loopSpan = getLoopSpanWidth();
+      if (loopSpan <= 0) return;
+
+      const normalizedLeft = ((galleryTrack.scrollLeft % loopSpan) + loopSpan) % loopSpan;
+      const trackCenter = normalizedLeft + galleryTrack.clientWidth / 2;
       let closestIdx = 0;
       let minDist = Infinity;
-      galleryCards.forEach((card, idx) => {
+
+      for (let i = 0; i < realCount; i++) {
+        const card = baseCards[i];
         const cardCenter = card.offsetLeft + card.offsetWidth / 2;
         const dist = Math.abs(cardCenter - trackCenter);
         if (dist < minDist) {
           minDist = dist;
-          closestIdx = idx;
+          closestIdx = i;
         }
+      }
+
+      carouselDots.forEach((dot, idx) => {
+        dot.classList.toggle("active", idx === closestIdx);
       });
-      return closestIdx;
     }
 
-    function updateCarouselDots() {
-      const activeIdx = getActiveSlideIndex();
-      carouselDots.forEach((dot, idx) => {
-        dot.classList.toggle("active", idx === activeIdx);
-      });
+    let isUserInteracting = false;
+    let resumeAutoTimeout = null;
+    let manualAnimFrame = null;
+
+    function smoothScrollToX(targetX, duration = 450) {
+      if (!galleryTrack) return;
+      if (manualAnimFrame) cancelAnimationFrame(manualAnimFrame);
+      const startX = galleryTrack.scrollLeft;
+      const deltaX = targetX - startX;
+      const startTime = performance.now();
+
+      function step(now) {
+        const elapsed = now - startTime;
+        const t = Math.min(1, elapsed / duration);
+        const ease = 1 - Math.pow(1 - t, 3);
+        galleryTrack.scrollLeft = startX + deltaX * ease;
+        if (t < 1) {
+          manualAnimFrame = requestAnimationFrame(step);
+        } else {
+          manualAnimFrame = null;
+        }
+      }
+      manualAnimFrame = requestAnimationFrame(step);
+    }
+
+    function pauseAutoFor(ms = 4500) {
+      isUserInteracting = true;
+      if (galleryTrack) galleryTrack.classList.add("user-dragging");
+      if (resumeAutoTimeout) clearTimeout(resumeAutoTimeout);
+      resumeAutoTimeout = setTimeout(() => {
+        isUserInteracting = false;
+        if (galleryTrack) galleryTrack.classList.remove("user-dragging");
+      }, ms);
     }
 
     function goToSlide(idx) {
-      const card = galleryCards[idx];
+      const card = baseCards[idx];
       if (!card || !galleryTrack) return;
-      const targetLeft = card.offsetLeft - (galleryTrack.clientWidth - card.offsetWidth) / 2;
-      galleryTrack.scrollTo({ left: targetLeft, behavior: "smooth" });
-    }
-
-    let autoSlideTimer = null;
-    let pauseAutoSlideTimeout = null;
-
-    function startAutoSlide() {
-      stopAutoSlide();
-      if (!galleryCards.length) return;
-      autoSlideTimer = setInterval(() => {
-        if (document.hidden) return;
-        const nextIdx = (getActiveSlideIndex() + 1) % galleryCards.length;
-        goToSlide(nextIdx);
-      }, 3400);
-    }
-
-    function stopAutoSlide() {
-      if (autoSlideTimer) {
-        clearInterval(autoSlideTimer);
-        autoSlideTimer = null;
-      }
-    }
-
-    function pauseAutoSlideTemporarily(delay = 5500) {
-      stopAutoSlide();
-      if (pauseAutoSlideTimeout) clearTimeout(pauseAutoSlideTimeout);
-      pauseAutoSlideTimeout = setTimeout(startAutoSlide, delay);
+      pauseAutoFor(5500);
+      const targetLeft = Math.max(0, card.offsetLeft - (galleryTrack.clientWidth - card.offsetWidth) / 2);
+      smoothScrollToX(targetLeft, 450);
     }
 
     function scrollGallery(dir) {
-      pauseAutoSlideTemporarily(6000);
-      const nextIdx = Math.max(0, Math.min(galleryCards.length - 1, getActiveSlideIndex() + dir));
-      goToSlide(nextIdx);
+      if (!galleryTrack || !realCount) return;
+      pauseAutoFor(5500);
+      const stepDistance = (baseCards[0]?.offsetWidth || 300) + 18;
+      const targetLeft = Math.max(0, galleryTrack.scrollLeft + dir * stepDistance);
+      smoothScrollToX(targetLeft, 420);
     }
 
-    if (galleryTrack) {
-      galleryTrack.addEventListener("scroll", updateCarouselDots, { passive: true });
-      galleryTrack.addEventListener("touchstart", () => pauseAutoSlideTemporarily(6500), { passive: true });
-      galleryTrack.addEventListener("pointerdown", () => pauseAutoSlideTemporarily(6500), { passive: true });
-      galleryTrack.addEventListener("mouseenter", stopAutoSlide);
-      galleryTrack.addEventListener("mouseleave", () => pauseAutoSlideTemporarily(2000));
-    }
-    carouselDots.forEach((dot) => {
-      dot.addEventListener("click", () => pauseAutoSlideTemporarily(6000));
-    });
-    startAutoSlide();
+    (function initContinuousAlbumMarquee() {
+      if (!galleryTrack || !realCount) return;
+      let lastFrameTime = performance.now();
+      const speedPxPerSec = 26;
+
+      function tick(now) {
+        const dt = Math.min(0.05, (now - lastFrameTime) / 1000);
+        lastFrameTime = now;
+
+        if (!isUserInteracting && !document.hidden && !manualAnimFrame) {
+          const loopSpan = getLoopSpanWidth();
+          if (loopSpan > 0 && galleryTrack.scrollWidth > galleryTrack.clientWidth) {
+            let nextScroll = galleryTrack.scrollLeft + speedPxPerSec * dt;
+            if (nextScroll >= loopSpan) {
+              nextScroll -= loopSpan;
+            }
+            galleryTrack.scrollLeft = nextScroll;
+          }
+        }
+        updateCarouselDots();
+        requestAnimationFrame(tick);
+      }
+
+      galleryTrack.addEventListener("scroll", () => {
+        const loopSpan = getLoopSpanWidth();
+        if (loopSpan > 0 && galleryTrack.scrollLeft >= loopSpan) {
+          galleryTrack.scrollLeft -= loopSpan;
+        }
+        updateCarouselDots();
+      }, { passive: true });
+
+      galleryTrack.addEventListener("touchstart", () => pauseAutoFor(5500), { passive: true });
+      galleryTrack.addEventListener("pointerdown", () => pauseAutoFor(5500), { passive: true });
+      galleryTrack.addEventListener("wheel", () => pauseAutoFor(4500), { passive: true });
+      galleryTrack.addEventListener("mouseenter", () => {
+        isUserInteracting = true;
+      });
+      galleryTrack.addEventListener("mouseleave", () => {
+        pauseAutoFor(1200);
+      });
+
+      requestAnimationFrame(tick);
+    })();
 
     document.getElementById("groom-name").textContent = WEDDING_CONFIG.groom.name;
     document.getElementById("groom-parents").textContent = WEDDING_CONFIG.groom.parents;
