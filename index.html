@@ -113,59 +113,119 @@
       position: fixed;
       inset: 0;
       z-index: 100;
-      background: radial-gradient(circle at 50% 30%, #6b3b4b 0%, #3a1e28 65%, #241118 100%);
-      color: #fff6f8;
+      background: radial-gradient(circle at 50% 35%, #ffeef3 0%, #f8dce4 58%, #f2c9d5 100%);
+      color: var(--ink);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
       padding: 24px;
-      transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+      transition: opacity 0.95s cubic-bezier(0.22, 1, 0.36, 1), transform 0.95s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.95s ease;
+      visibility: visible;
+    }
+    #cover::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.85) 0%, rgba(214, 104, 133, 0.22) 45%, transparent 72%);
+      opacity: 0;
+      transform: scale(0.5);
+      pointer-events: none;
+      transition: opacity 0.75s ease, transform 0.95s cubic-bezier(0.22, 1, 0.36, 1);
     }
     #cover.opened {
       opacity: 0;
       pointer-events: none;
-      transform: scale(1.04);
+      visibility: hidden;
+      transform: scale(1.14);
+    }
+    #cover.opened::before {
+      opacity: 1;
+      transform: scale(1.85);
+    }
+    .cover-card {
+      position: relative;
+      width: min(100%, 380px);
+      background: linear-gradient(180deg, #fff9fb 0%, #fdeef3 100%);
+      border: 1px solid rgba(214, 104, 133, 0.28);
+      border-radius: 22px;
+      padding: 34px 26px 32px;
+      box-shadow: 0 24px 60px rgba(179, 73, 102, 0.2);
+      transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.7s ease;
+    }
+    .cover-card::before,
+    .cover-card::after {
+      content: "✿";
+      position: absolute;
+      font-size: 20px;
+      color: var(--rose);
+      opacity: 0.55;
+      pointer-events: none;
+    }
+    .cover-card::before { top: 14px; left: 16px; }
+    .cover-card::after { bottom: 14px; right: 16px; }
+    #cover.opened .cover-card {
+      transform: scale(1.18) translateY(-16px);
+      opacity: 0;
     }
     .monogram {
-      width: 96px;
-      height: 96px;
-      border: 1.5px solid #f6b6c8;
+      width: 84px;
+      height: 84px;
+      border: 1.5px solid rgba(179, 73, 102, 0.42);
       border-radius: 50%;
       display: grid;
       place-items: center;
       font-family: 'Cormorant Garamond', serif;
-      font-size: 30px;
+      font-size: 28px;
       letter-spacing: 2px;
-      color: #ffdce6;
-      margin-bottom: 24px;
-      background: rgba(255, 255, 255, 0.05);
-      box-shadow: 0 0 0 8px rgba(246, 182, 200, 0.1);
+      color: var(--rose-dark);
+      margin: 0 auto 18px;
+      background: rgba(255, 255, 255, 0.75);
+      box-shadow: 0 0 0 7px rgba(214, 104, 133, 0.12);
       animation: pulseRing 3s ease-in-out infinite;
     }
     @keyframes pulseRing {
-      0%, 100% { box-shadow: 0 0 0 6px rgba(246, 182, 200, 0.1); }
-      50% { box-shadow: 0 0 0 15px rgba(246, 182, 200, 0.2); }
+      0%, 100% { box-shadow: 0 0 0 6px rgba(214, 104, 133, 0.12); }
+      50% { box-shadow: 0 0 0 14px rgba(214, 104, 133, 0.22); }
+    }
+    .cover-rule {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin: 14px auto 12px;
+      max-width: 210px;
+      color: var(--rose);
+      font-size: 13px;
+    }
+    .cover-rule::before,
+    .cover-rule::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(179, 73, 102, 0.45));
+    }
+    .cover-rule::after {
+      background: linear-gradient(90deg, rgba(179, 73, 102, 0.45), transparent);
     }
     .btn-open {
-      margin-top: 28px;
-      padding: 14px 38px;
-      background: linear-gradient(135deg, #e07693 0%, var(--rose-dark) 100%);
+      margin-top: 22px;
+      padding: 13px 36px;
+      background: linear-gradient(135deg, #d86c89 0%, var(--rose-dark) 100%);
       color: #fff;
-      border: 1px solid rgba(255, 224, 233, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.45);
       border-radius: 999px;
       font-size: 14px;
       font-weight: 600;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
+      letter-spacing: 1.2px;
       cursor: pointer;
-      box-shadow: 0 10px 28px rgba(214, 104, 133, 0.42);
+      box-shadow: 0 10px 26px rgba(179, 73, 102, 0.35);
       transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
     .btn-open:hover {
       transform: translateY(-2px);
-      box-shadow: 0 14px 32px rgba(214, 104, 133, 0.58);
+      box-shadow: 0 14px 32px rgba(179, 73, 102, 0.48);
     }
 
     .wrap {
@@ -174,6 +234,21 @@
       padding: 0 20px 132px;
       position: relative;
       z-index: 10;
+      transition: transform 0.95s cubic-bezier(0.22, 1, 0.36, 1), filter 0.95s ease;
+    }
+    body.invite-entering .wrap {
+      filter: blur(0px);
+    }
+    body.invite-entering .hero > * {
+      animation: heroStaggerIn 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+    body.invite-entering .hero > *:nth-child(2) { animation-delay: 0.08s; }
+    body.invite-entering .hero > *:nth-child(3) { animation-delay: 0.16s; }
+    body.invite-entering .hero > *:nth-child(4) { animation-delay: 0.24s; }
+    body.invite-entering .hero > *:nth-child(5) { animation-delay: 0.32s; }
+    @keyframes heroStaggerIn {
+      0% { opacity: 0; transform: translateY(24px) scale(0.97); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
     }
 
     section {
@@ -454,6 +529,120 @@
     }
     .card p { font-size: 14px; color: var(--muted); }
 
+    /* Lịch âm dương tháng 12 / 2026 (ảnh 2) */
+    .lunar-date-banner {
+      max-width: 480px;
+      margin: 18px auto 0;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 20px 18px;
+      box-shadow: 0 10px 26px rgba(179, 73, 102, 0.07);
+    }
+    .lunar-time-top {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--rose-dark);
+      margin-bottom: 8px;
+    }
+    .lunar-day-strip {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      padding: 8px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      color: var(--ink);
+    }
+    .lunar-day-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 36px;
+      font-weight: 700;
+      line-height: 1;
+      color: var(--rose-dark);
+    }
+    .lunar-year-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-top: 6px;
+    }
+    .lunar-sub-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      color: var(--rose-dark);
+      margin-top: 2px;
+    }
+    .month-cal-box {
+      margin-top: 16px;
+      padding: 16px 14px 14px;
+      border: 1.5px solid rgba(214, 104, 133, 0.35);
+      border-radius: 18px;
+      background: linear-gradient(180deg, #fffcfd 0%, #fff4f7 100%);
+    }
+    .month-cal-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--rose-dark);
+      margin-bottom: 10px;
+    }
+    .cal-weekdays,
+    .cal-days {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 4px;
+      align-items: center;
+      justify-items: center;
+    }
+    .cal-weekdays {
+      padding-bottom: 8px;
+      margin-bottom: 6px;
+      border-bottom: 1px solid var(--rose-light);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--muted);
+    }
+    .cal-day {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      font-size: 13px;
+      color: var(--ink);
+      border-radius: 50%;
+      position: relative;
+    }
+    .cal-day.muted-day {
+      color: #c7aeb6;
+      font-size: 12px;
+    }
+    .cal-day.wedding-day {
+      color: #fff;
+      font-weight: 700;
+      z-index: 1;
+    }
+    .cal-day.wedding-day::before {
+      content: "♥";
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      font-size: 32px;
+      color: var(--rose);
+      z-index: -1;
+      text-shadow: 0 4px 10px rgba(214, 104, 133, 0.35);
+      animation: softBeat 2.2s ease-in-out infinite;
+    }
+
     .countdown-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -705,11 +894,14 @@
   </button>
 
   <div id="cover">
-    <div class="monogram" id="cover-initials">K &amp; N</div>
-    <span class="eyebrow" id="cover-eyebrow" style="color: #f6c4d2;">Trân trọng kính mời</span>
-    <h2 class="serif" style="font-size: 38px; margin: 6px 0;" id="cover-names">Viết Khiêm &amp; Hồng Nhung</h2>
-    <p style="color: #e8cbd3; font-size: 14px;" id="cover-date">Chủ nhật, 13.12.2026 — Hải Phòng</p>
-    <button class="btn-open" onclick="openInvite()">Mở Thiệp Mời</button>
+    <div class="cover-card">
+      <div class="monogram" id="cover-initials">K &amp; N</div>
+      <span class="eyebrow" id="cover-eyebrow">Trân trọng kính mời</span>
+      <h2 class="serif" style="font-size: 36px; line-height: 1.15; margin: 4px 0;" id="cover-names">Viết Khiêm &amp; Hồng Nhung</h2>
+      <div class="cover-rule"><span>♥</span></div>
+      <p style="color: var(--muted); font-size: 14px;" id="cover-date">Chủ nhật, 13.12.2026 — Hải Phòng</p>
+      <button type="button" class="btn-open" onclick="openInvite()">Mở Thiệp Mời</button>
+    </div>
   </div>
 
   <main class="wrap">
@@ -814,6 +1006,73 @@
       <span class="eyebrow">Thời Gian &amp; Địa Điểm</span>
       <h2 class="serif" style="font-size: 38px;" id="display-date">09:30 — Chủ nhật, Ngày 13 Tháng 12 Năm 2026</h2>
       <p style="color: var(--muted); margin-top: 6px;" id="venue-name">Nhà văn hóa thôn Bắc Bình, xã Nguyễn Bỉnh Khiêm, Thành phố Hải Phòng</p>
+
+      <div class="lunar-date-banner">
+        <div class="lunar-time-top">09:30</div>
+        <div class="lunar-day-strip">
+          <span>CHỦ NHẬT</span>
+          <span>|</span>
+          <span class="lunar-day-num">13</span>
+          <span>|</span>
+          <span>THÁNG 12</span>
+        </div>
+        <div class="lunar-year-label">2026</div>
+        <div class="lunar-sub-label">(TỨC NGÀY 05 THÁNG 11 NĂM BÍNH NGỌ)</div>
+
+        <div class="month-cal-box">
+          <div class="month-cal-title">Tháng 12 / 2026</div>
+          <div class="cal-weekdays">
+            <span>T2</span>
+            <span>T3</span>
+            <span>T4</span>
+            <span>T5</span>
+            <span>T6</span>
+            <span>T7</span>
+            <span>CN</span>
+          </div>
+          <div class="cal-days">
+            <span class="cal-day muted-day"></span>
+            <span class="cal-day">1</span>
+            <span class="cal-day">2</span>
+            <span class="cal-day">3</span>
+            <span class="cal-day">4</span>
+            <span class="cal-day">5</span>
+            <span class="cal-day">6</span>
+
+            <span class="cal-day">7</span>
+            <span class="cal-day">8</span>
+            <span class="cal-day">9</span>
+            <span class="cal-day">10</span>
+            <span class="cal-day">11</span>
+            <span class="cal-day">12</span>
+            <span class="cal-day wedding-day" title="Ngày cưới 13/12/2026">13</span>
+
+            <span class="cal-day">14</span>
+            <span class="cal-day">15</span>
+            <span class="cal-day">16</span>
+            <span class="cal-day">17</span>
+            <span class="cal-day">18</span>
+            <span class="cal-day">19</span>
+            <span class="cal-day">20</span>
+
+            <span class="cal-day">21</span>
+            <span class="cal-day">22</span>
+            <span class="cal-day">23</span>
+            <span class="cal-day">24</span>
+            <span class="cal-day">25</span>
+            <span class="cal-day">26</span>
+            <span class="cal-day">27</span>
+
+            <span class="cal-day">28</span>
+            <span class="cal-day">29</span>
+            <span class="cal-day">30</span>
+            <span class="cal-day">31</span>
+            <span class="cal-day muted-day"></span>
+            <span class="cal-day muted-day"></span>
+            <span class="cal-day muted-day"></span>
+          </div>
+        </div>
+      </div>
 
       <div class="countdown-grid">
         <div class="time-box"><span id="cd-days">00</span><small>Ngày</small></div>
@@ -1042,8 +1301,21 @@
       }
     }
 
+    let spawnSwipeEffect = null;
     function openInvite() {
-      document.getElementById("cover").classList.add("opened");
+      const coverEl = document.getElementById("cover");
+      coverEl.classList.add("opened");
+      document.body.classList.remove("invite-entering");
+      void document.body.offsetWidth;
+      document.body.classList.add("invite-entering");
+
+      if (spawnSwipeEffect) {
+        const cx = window.innerWidth / 2;
+        const cy = window.innerHeight / 2;
+        spawnSwipeEffect(cx, cy, 12);
+        setTimeout(() => spawnSwipeEffect(cx - 50, cy - 20, 7), 140);
+        setTimeout(() => spawnSwipeEffect(cx + 50, cy - 20, 7), 240);
+      }
       startMusic();
     }
 
@@ -1061,7 +1333,6 @@
     }, { threshold: 0.12 });
     document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
 
-    let spawnSwipeEffect = null;
     (function initPetals() {
       const canvas = document.getElementById("petal-canvas");
       const ctx = canvas.getContext("2d");
