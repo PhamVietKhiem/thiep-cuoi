@@ -265,7 +265,7 @@
     .wrap {
       max-width: 780px;
       margin: 0 auto;
-      padding: 0 20px 132px;
+      padding: 0 20px 142px;
       position: relative;
       z-index: 10;
     }
@@ -425,7 +425,6 @@
     }
     .card p { font-size: 14px; color: var(--muted); }
 
-    /* Album dạng Stack / Coverflow 3D + bộ đếm x / 4 */
     .coverflow-shell {
       position: relative;
       margin-top: 26px;
@@ -570,7 +569,6 @@
       opacity: 0.85;
     }
 
-    /* Lịch âm dương tháng 12 / 2026 */
     .lunar-date-banner {
       max-width: 480px;
       margin: 18px auto 0;
@@ -798,6 +796,16 @@
       box-shadow: none;
     }
     .btn-outline:hover { background: var(--rose-dark); color: #fff; }
+
+    .site-credit {
+      text-align: center;
+      margin-top: 28px;
+      padding-top: 12px;
+      font-size: 11px;
+      letter-spacing: 0.8px;
+      color: var(--muted);
+      opacity: 0.72;
+    }
 
     .modal {
       position: fixed;
@@ -1190,7 +1198,6 @@
 
       <div style="margin-top: 24px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
         <button type="button" id="map-btn" class="btn" onclick="toggleMapModal(true)">Xem Bản Đồ Chỉ Đường</button>
-        <button type="button" class="btn btn-outline" onclick="toggleRsvpModal(true)">Xác Nhận Tham Dự</button>
         <button type="button" class="btn btn-outline" onclick="toggleGiftModal(true)">Gửi Mừng Cưới</button>
       </div>
       <div class="heart-divider" style="margin-top: 42px;" aria-hidden="true"><span>♥</span></div>
@@ -1214,6 +1221,7 @@
         <button type="submit" class="btn">Gửi Xác Nhận</button>
       </form>
       <p id="rsvp-status" style="margin-top: 14px; text-align: center; font-size: 14px; color: var(--rose-dark); font-weight: 600;"></p>
+      <p class="site-credit">Created by Pham Viet Khiem</p>
     </section>
   </main>
 
@@ -1327,7 +1335,6 @@
     document.getElementById("map-external-link").href = WEDDING_CONFIG.mapUrl;
     document.getElementById("hero-img").src = WEDDING_CONFIG.heroPhoto;
 
-    // Album Stack / Coverflow 3D + bộ đếm x / 4
     const stageEl = document.getElementById("coverflow-stage");
     const flowCards = Array.from(document.querySelectorAll("#coverflow-stage .coverflow-card"));
     const carouselDots = document.querySelectorAll("#carousel-dots .carousel-dot");
@@ -1348,7 +1355,7 @@
       }
     });
 
-    let flowPos = 0; // Vị trí liên tục (có thể lẻ khi kéo/lướt tự động)
+    let flowPos = 0;
     let flowTarget = 0;
     let isFlowDragging = false;
     let flowDragStartX = 0;
