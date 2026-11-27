@@ -68,6 +68,7 @@
       z-index: 50;
     }
 
+    /* Nút icon sóng nhạc chạy theo nhịp */
     .music-fab {
       position: fixed;
       bottom: 82px;
@@ -76,7 +77,7 @@
       width: 48px;
       height: 48px;
       border-radius: 50%;
-      background: linear-gradient(145deg, #b88b5a 0%, #9b6f42 100%);
+      background: linear-gradient(145deg, #c27b8e 0%, var(--rose-dark) 100%);
       color: #ffffff;
       border: 3px solid rgba(255, 255, 255, 0.92);
       box-shadow: 0 10px 24px rgba(70, 44, 52, 0.24), 0 0 0 1px rgba(214, 104, 133, 0.25);
@@ -89,11 +90,9 @@
       transform: translateY(-2px) scale(1.04);
       filter: brightness(1.04);
     }
-    .music-fab:active {
-      transform: scale(0.95);
-    }
+    .music-fab:active { transform: scale(0.95); }
     .music-fab.playing {
-      box-shadow: 0 12px 28px rgba(179, 73, 102, 0.34), 0 0 0 6px rgba(214, 104, 133, 0.16);
+      box-shadow: 0 12px 28px rgba(179, 73, 102, 0.36), 0 0 0 7px rgba(214, 104, 133, 0.18);
     }
     .eq-bars {
       display: flex;
@@ -338,7 +337,7 @@
       font-weight: 600;
     }
     .sub-caption-below {
-      font-size: 13.5px;
+      font-size: 13px;
       color: var(--muted);
       margin-top: 6px;
       display: block;
@@ -402,6 +401,41 @@
       animation: softBeat 1.9s ease-in-out infinite;
     }
 
+    /* Thẻ danh xưng nghiêng nhẹ lấy cảm hứng từ video */
+    .tilted-couple-tags {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+    .tilted-tag {
+      background: var(--surface);
+      border: 1px solid var(--rose-light);
+      border-radius: 14px;
+      padding: 8px 16px;
+      box-shadow: 0 8px 20px rgba(179, 73, 102, 0.08);
+      text-align: center;
+      transition: transform 0.25s ease;
+    }
+    .tilted-tag.groom-tilt { transform: rotate(-2.5deg); }
+    .tilted-tag.bride-tilt { transform: rotate(2.5deg); }
+    .tilted-tag:hover { transform: rotate(0deg) translateY(-2px); }
+    .tilted-tag small {
+      display: block;
+      font-size: 10.5px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--rose-dark);
+      font-weight: 600;
+    }
+    .tilted-tag strong {
+      font-family: 'Lora', serif;
+      font-size: 17px;
+      color: var(--ink);
+    }
+
     .families {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -427,6 +461,7 @@
     }
     .card p { font-size: 14px; color: var(--muted); }
 
+    /* Album lướt liên tục mượt mà + chỉ số ảnh x / 4 */
     .carousel-shell {
       position: relative;
       margin-top: 26px;
@@ -456,11 +491,12 @@
       border-radius: var(--radius);
       padding: 11px 11px 18px;
       box-shadow: 0 14px 30px rgba(179, 73, 102, 0.09);
-      transition: box-shadow 0.3s ease;
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
       position: relative;
-      transform: translateZ(0);
+      transform: translateZ(0) scale(0.97);
     }
-    .gallery-card:hover {
+    .gallery-card.is-centered {
+      transform: translateZ(0) scale(1.015);
       box-shadow: 0 18px 38px rgba(214, 104, 133, 0.16);
     }
     .gallery-frame {
@@ -558,14 +594,23 @@
       width: 24px;
       background: var(--rose);
     }
+    .album-counter {
+      text-align: center;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--rose-dark);
+      margin-top: 6px;
+      letter-spacing: 0.6px;
+    }
     .swipe-hint {
       text-align: center;
       font-size: 12px;
-      color: var(--rose-dark);
-      margin-top: 8px;
+      color: var(--muted);
+      margin-top: 4px;
       opacity: 0.85;
     }
 
+    /* Lịch âm dương tháng 12 / 2026 */
     .lunar-date-banner {
       max-width: 480px;
       margin: 18px auto 0;
@@ -814,6 +859,26 @@
       position: relative;
       border: 1px solid var(--rose-light);
     }
+    .modal-close-btn {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      background: var(--bg);
+      color: var(--ink);
+      font-size: 18px;
+      line-height: 1;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+    }
+    .modal-close-btn:hover {
+      background: var(--rose-light);
+      color: var(--rose-dark);
+    }
     .qr-frame {
       width: 220px;
       aspect-ratio: 3 / 4;
@@ -866,11 +931,14 @@
     }
     .dock-rsvp-link {
       color: #fff6f8;
-      text-decoration: none;
+      background: none;
+      border: none;
+      font-family: inherit;
       font-size: 13px;
       font-weight: 600;
       letter-spacing: 0.2px;
       white-space: nowrap;
+      cursor: pointer;
       transition: color 0.2s ease;
     }
     .dock-rsvp-link:hover { color: #f9b6c8; }
@@ -984,6 +1052,17 @@
     </section>
 
     <section class="reveal">
+      <div class="tilted-couple-tags" aria-hidden="true">
+        <div class="tilted-tag groom-tilt">
+          <small>Út nam</small>
+          <strong>Phạm Viết Khiêm</strong>
+        </div>
+        <div class="tilted-tag bride-tilt">
+          <small>Út nữ</small>
+          <strong>Phạm Hồng Nhung</strong>
+        </div>
+      </div>
+
       <div style="text-align: center; margin-bottom: 28px;">
         <h2 class="serif" style="font-size: 36px;">Gia Đình Hai Bên</h2>
         <span class="eyebrow sub-caption-below">Hân Hạnh Báo Tin</span>
@@ -1016,7 +1095,7 @@
         <button type="button" class="carousel-nav next" onclick="scrollGallery(1)" aria-label="Ảnh tiếp theo">›</button>
 
         <div class="gallery-grid" id="gallery-grid">
-          <figure class="gallery-card">
+          <figure class="gallery-card is-centered">
             <div class="gallery-frame">
               <img src="./DSC02621.jpg" alt="Khoảnh khắc 1 — Viết Khiêm & Hồng Nhung" loading="eager" decoding="async" />
             </div>
@@ -1063,6 +1142,7 @@
           <button type="button" class="carousel-dot" onclick="goToSlide(2)" aria-label="Ảnh 3"></button>
           <button type="button" class="carousel-dot" onclick="goToSlide(3)" aria-label="Ảnh 4"></button>
         </div>
+        <div class="album-counter" id="album-counter">1 / 4</div>
         <p class="swipe-hint">← Vuốt ngang để xem thêm ảnh →</p>
       </div>
       <div class="heart-divider" style="margin-top: 38px;" aria-hidden="true"><span>♥</span></div>
@@ -1162,6 +1242,7 @@
 
       <div style="margin-top: 24px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
         <button type="button" id="map-btn" class="btn" onclick="toggleMapModal(true)">Xem Bản Đồ Chỉ Đường</button>
+        <button type="button" class="btn btn-outline" onclick="toggleRsvpModal(true)">Xác Nhận Tham Dự</button>
         <button type="button" class="btn btn-outline" onclick="toggleGiftModal(true)">Gửi Mừng Cưới</button>
       </div>
       <div class="heart-divider" style="margin-top: 42px;" aria-hidden="true"><span>♥</span></div>
@@ -1187,6 +1268,25 @@
       <p id="rsvp-status" style="margin-top: 14px; text-align: center; font-size: 14px; color: var(--rose-dark); font-weight: 600;"></p>
     </section>
   </main>
+
+  <div class="modal" id="rsvp-modal" onclick="if(event.target===this) toggleRsvpModal(false)">
+    <div class="modal-box" style="text-align: left;">
+      <button type="button" class="modal-close-btn" onclick="toggleRsvpModal(false)" aria-label="Đóng">×</button>
+      <h3 class="serif" style="font-size: 26px; color: var(--rose-dark); text-align: center;">Xác Nhận Tham Dự</h3>
+      <p style="font-size: 13px; color: var(--muted); text-align: center; margin-top: 4px;">09:30 Chủ nhật, 13.12.2026 · Nhà văn hóa thôn Bắc Bình, Hải Phòng</p>
+      <form id="rsvp-modal-form" onsubmit="handleModalRSVP(event)" style="display: grid; gap: 12px; margin-top: 16px;">
+        <input type="text" id="modal-guest-name" placeholder="Tên của bạn hoặc gia đình *" required />
+        <select id="modal-guest-attend">
+          <option value="Có, tôi sẽ tham dự">Tôi sẽ đến</option>
+          <option value="Đi cùng người thân (2 người)">Đi cùng người thân (2 người)</option>
+          <option value="Rất tiếc không thể đến">Rất tiếc, tôi không thể đến</option>
+        </select>
+        <textarea id="modal-guest-wish" rows="2" placeholder="Gửi lời chúc tới cô dâu &amp; chú rể..."></textarea>
+        <button type="submit" class="btn" style="width: 100%;">Gửi Xác Nhận</button>
+      </form>
+      <p id="modal-rsvp-status" style="margin-top: 10px; text-align: center; font-size: 13px; color: var(--rose-dark); font-weight: 600;"></p>
+    </div>
+  </div>
 
   <div class="modal" id="map-modal" onclick="if(event.target===this) toggleMapModal(false)">
     <div class="modal-box">
@@ -1223,7 +1323,7 @@
   </div>
 
   <div class="bottom-dock" role="navigation" aria-label="Điều hướng nhanh và bắn tim">
-    <a href="#rsvp-section" class="dock-rsvp-link">Xác nhận &amp; lời chúc</a>
+    <button type="button" class="dock-rsvp-link" onclick="toggleRsvpModal(true)">Xác nhận &amp; lời chúc</button>
     <button type="button" class="heart-btn" id="heart-btn" onclick="shootHearts(event)" aria-label="Bắn tim chúc phúc">
       <span class="heart-icon">♥</span>
       <span>Bắn tim</span>
@@ -1282,6 +1382,7 @@
     const galleryTrack = document.getElementById("gallery-grid");
     const baseCards = Array.from(document.querySelectorAll("#gallery-grid .gallery-card"));
     const carouselDots = document.querySelectorAll("#carousel-dots .carousel-dot");
+    const albumCounterEl = document.getElementById("album-counter");
     const realCount = baseCards.length;
 
     WEDDING_CONFIG.gallery.forEach((item, idx) => {
@@ -1336,6 +1437,17 @@
 
       carouselDots.forEach((dot, idx) => {
         dot.classList.toggle("active", idx === closestIdx);
+      });
+      if (albumCounterEl) {
+        albumCounterEl.textContent = `${closestIdx + 1} / ${realCount}`;
+      }
+
+      allCards.forEach((card, idx) => {
+        const modIdx = idx % realCount;
+        const cCenter = card.offsetLeft + card.offsetWidth / 2;
+        const globalTrackCenter = galleryTrack.scrollLeft + galleryTrack.clientWidth / 2;
+        const nearCenter = Math.abs(cCenter - globalTrackCenter) < card.offsetWidth * 0.65;
+        card.classList.toggle("is-centered", nearCenter || (modIdx === closestIdx && Math.abs(cCenter - (normalizedLeft + galleryTrack.clientWidth / 2)) < card.offsetWidth * 0.65));
       });
     }
 
@@ -1590,6 +1702,14 @@
       document.getElementById("map-modal").classList.toggle("active", show);
     }
 
+    function toggleRsvpModal(show) {
+      document.getElementById("rsvp-modal").classList.toggle("active", show);
+      if (show) {
+        const inputEl = document.getElementById("modal-guest-name");
+        if (inputEl) setTimeout(() => inputEl.focus(), 60);
+      }
+    }
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -1796,14 +1916,7 @@
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
-    async function handleRSVP(e) {
-      e.preventDefault();
-      const btn = e.target.querySelector("button[type='submit']");
-      const statusEl = document.getElementById("rsvp-status");
-      const name = document.getElementById("guest-name").value.trim();
-      const attend = document.getElementById("guest-attend").value;
-      const wish = document.getElementById("guest-wish").value.trim();
-
+    async function submitRsvpPayload({ name, attend, wish, btn, statusEl, formEl }) {
       btn.disabled = true;
       btn.textContent = "Đang gửi...";
 
@@ -1820,13 +1933,37 @@
         localStorage.setItem("wedding_rsvp", JSON.stringify(records));
 
         statusEl.textContent = `Cảm ơn ${name}! Phản hồi "${attend}" đã được gửi thành công.`;
-        e.target.reset();
+        formEl.reset();
       } catch (err) {
         statusEl.textContent = "Gửi chưa thành công, vui lòng thử lại sau giây lát.";
       } finally {
         btn.disabled = false;
         btn.textContent = "Gửi Xác Nhận";
       }
+    }
+
+    async function handleRSVP(e) {
+      e.preventDefault();
+      await submitRsvpPayload({
+        name: document.getElementById("guest-name").value.trim(),
+        attend: document.getElementById("guest-attend").value,
+        wish: document.getElementById("guest-wish").value.trim(),
+        btn: e.target.querySelector("button[type='submit']"),
+        statusEl: document.getElementById("rsvp-status"),
+        formEl: e.target
+      });
+    }
+
+    async function handleModalRSVP(e) {
+      e.preventDefault();
+      await submitRsvpPayload({
+        name: document.getElementById("modal-guest-name").value.trim(),
+        attend: document.getElementById("modal-guest-attend").value,
+        wish: document.getElementById("modal-guest-wish").value.trim(),
+        btn: e.target.querySelector("button[type='submit']"),
+        statusEl: document.getElementById("modal-rsvp-status"),
+        formEl: e.target
+      });
     }
   </script>
 </body>
